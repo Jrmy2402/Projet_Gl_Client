@@ -13,6 +13,9 @@
 **git pull origin master**               -- récupération des modifs
 
 
+**git fetch branche**               -- changement de branche
+
+
 
 
 
