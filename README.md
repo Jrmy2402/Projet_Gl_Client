@@ -1,5 +1,7 @@
 # Tuto git pour push des modifs
+
 git status                           -- pour voir les modifs
+
 git add .                            -- sauvegarde les modifs des fichiers qui seront envoyés par le push
 git commit -m "description commit"   -- enregistre les modifs en donnant une description
 git push origin master               -- envoie des modifs sur le git sur la branche principale
