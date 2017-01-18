@@ -1,3 +1,8 @@
+# Lancement du client
+
+**ng serve**
+
+
 # Tuto git pour push des modifs
 
 **git status**
@@ -13,6 +18,7 @@
 **git pull origin master**               -- récupération des modifs
 
 
+**git fetch branche**               -- changement de branche
 
 
 
