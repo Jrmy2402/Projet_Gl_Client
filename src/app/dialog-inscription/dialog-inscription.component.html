@@ -1,0 +1,49 @@
+<md-toolbar color="primary">
+  <span>Inscription</span>
+  <!-- This fills the remaining space of the current row -->
+  <span class="example-fill-remaining-space"></span>
+  <md-icon (click)="closeDialog()" class="icon">clear</md-icon>
+  <!--<span>Right Aligned Text</span>-->
+</md-toolbar>
+<md-dialog-actions fxLayout="column" fxLayoutAlign="center center">
+  <form fxLayout="column" fxLayoutAlign="center center" #form="ngForm" (submit)="Inscription(form)">
+    <span class="error margin-text-error">{{error}}</span>
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center" class="width90">
+      <md-input-container dividerColor="{{msgNom.invalid && msgNom.touched ?'warn' : 'primary'}}" class="margin-input-container" [ngClass]="{'error': msgNom.invalid && msgNom.touched}">
+        <input  type="text" #msgNom="ngModel" [(ngModel)]="nom" name="nom" id="nom" md-input placeholder="Nom" required>
+        <md-hint *ngIf="msgNom.invalid && msgNom.touched" [ngStyle]="{'color': 'red'}" align="start">Ce champ est obligatoire.</md-hint> 
+      </md-input-container>
+      <md-input-container dividerColor="{{msgPrenom.invalid && msgPrenom.touched ?'warn' : 'primary'}}" class="margin-input-container" [ngClass]="{'error': msgPrenom.invalid && msgPrenom.touched}">
+        <input type="text" #msgPrenom="ngModel" [(ngModel)]="prenom" name="prenom" id="prenom" md-input placeholder="Prenom" required>
+        <md-hint *ngIf="msgPrenom.invalid && msgPrenom.touched" [ngStyle]="{'color': 'red'}" align="start">Ce champ est obligatoire.</md-hint> 
+      </md-input-container>
+    </div>
+    <div fxFlex="90" class="width90">
+      <md-input-container fxFlex="100" class="width100 margin-input-container"  dividerColor="{{msgEmail.invalid && msgEmail.touched ?'warn' : 'primary'}}" [ngClass]="{'error': msgEmail.invalid && msgEmail.touched}">
+        <input md-input type="email"  #msgEmail="ngModel" [(ngModel)]="email" name="email" id="email" placeholder="Email" required pattern='^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$'>
+        <md-hint *ngIf="msgEmail.touched && errorMessageEmail()" [ngStyle]="{'color': 'red'}" align="start">{{errorMessageEmail()}}</md-hint>  
+      </md-input-container>
+    </div>
+    <div fxFlex="90" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center" class="width90">
+      <md-input-container fxFlex dividerColor="{{msgPassword.invalid && msgPassword.touched ?'warn' : 'primary'}}" class="margin-input-container" [ngClass]="{'error': msgPassword.invalid && msgPassword.touched}">
+        <input md-input type="password" #msgPassword="ngModel" [(ngModel)]="password" name="password" id="password" placeholder="Mot de passe" required>
+        <md-hint *ngIf="msgPassword.invalid && msgPassword.touched" [ngStyle]="{'color': 'red'}" align="start">Ce champ est obligatoire.</md-hint>  
+      </md-input-container>
+      <md-input-container fxFlex dividerColor="{{msgPasswordConf.invalid && msgPasswordConf.touched ?'warn' : 'primary'}}" class="margin-input-container" [ngClass]="{'error': msgPasswordConf.invalid && msgPasswordConf.touched}">
+        <input md-input type="password" #msgPasswordConf="ngModel" [(ngModel)]="password_conf" name="password_conf" id="password_conf" placeholder="Confirmation mot de passe"
+          required>
+        <md-hint *ngIf="msgPasswordConf.invalid && msgPasswordConf.touched" [ngStyle]="{'color': 'red'}" align="start">Ce champ est obligatoire.</md-hint>  
+      </md-input-container>
+    </div>
+    <button type="submit" md-raised-button class="width90 margin-button-inscription" color="primary" [disabled]="form.invalid">INSCRIPTION</button>
+  </form>
+  <md-divider class="width90"></md-divider>
+  <div fxFlex="90" fxLayout="row" fxLayoutAlign="space-between center" class="width90">
+    <div>
+      Déjà membre VMRS ?
+    </div>
+    <div>
+      <button md-button color="primary">CONNEXION</button>
+    </div>
+  </div>
+</md-dialog-actions>
