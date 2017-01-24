@@ -1,0 +1,43 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import '~@angular/material/core/theming/prebuilt/deeppurple-amber.css';
+body {
+  margin: 0px;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+md-dialog-container {
+  padding-top: 0px!important;
+  padding-left: 0px!important;
+  padding-right: 0px!important;
+}
+
+
+/* class for width*/
+
+.width90 {
+  width: 90%;
+}
+
+.width100 {
+  width: 100%;
+}
+
+md-divider {
+  display: block;
+  border-top-width: 1px;
+  border-top-style: solid;
+  margin: 0;
+  border-top-color: rgba(0, 0, 0, 0.12);
+}
+
+.md-input-placeholder.md-float.md-empty.md-warn, .md-input-placeholder.md-float.md-warn {
+  color: red!important;
+}
+
+.error {
+  .md-input-underline {
+    border-color: red;
+  }
+  color: red!important;
+}
