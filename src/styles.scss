@@ -8,6 +8,10 @@ body {
   font-family: 'Source Sans Pro', Roboto, "Helvetica Neue", sans-serif;
 }
 
+md-card{
+  font-family: 'Source Sans Pro', Roboto, "Helvetica Neue", sans-serif !important;
+}
+
 md-dialog-container {
   padding-top: 0px!important;
   padding-left: 0px!important;
@@ -79,18 +83,86 @@ md-divider {
 }
 
 .fixed-ratio-resize { /* basic responsive img */
+  margin-top: 30px;
 	max-width: 100%;
 	height: auto;
 	width: auto\9; /* IE8 */
-}
-
-.title {
-  font-weight: 200;
-  font-size: 72px;
+  @media only screen and (max-width: 600px) {
+    margin-top: 10px;
+	  max-width: 50%;
+  }
 }
 
 .fond {
-  background-image:  url("assets/La-route.jpg");
+  height: 700px;
+  background-image:  url("assets/La-route2.jpg");
   // background-size: 100% auto;
+  -webkit-background-size: cover;
   background-size: cover;
+  background-position: center;
+}
+
+.title {
+  font-weight: 300;
+  font-size: 72px;
+  margin-left: 40px;
+  @media only screen and (max-width: 1700px) {
+    font-size: 64px;
+  }
+  @media only screen and (max-width: 1500px) {
+    font-size: 50px;
+  }
+  @media only screen and (max-width: 1200px) {
+    font-size: 42px;
+  }
+  @media only screen and (max-width: 1000px) {
+    font-size: 38px;
+  }
+  @media only screen and (max-width: 600px) {
+    text-align: center;
+    color: white;
+    margin-left: 0px;
+  }
+}
+
+.subtitle {
+  font-weight: 200;
+  font-size: 48px;
+  margin-left: 40px;
+  @media only screen and (max-width: 1700px) {
+    font-size: 42px;
+  }
+  @media only screen and (max-width: 1500px) {
+    font-size: 38px;
+  }
+  @media only screen and (max-width: 1200px) {
+    font-size: 34px;
+  }
+  @media only screen and (max-width: 1000px) {
+    font-size: 26px;
+  }
+  @media only screen and (max-width: 600px) {
+    text-align: center;
+    color: white;
+    margin-left: 0px;
+  }
+}
+.button-read-more {
+  margin-left: 60px;
+  @media only screen and (max-width: 600px) {
+    text-align: center;
+    margin-left: 0px;
+  }
+}
+
+.title-card {
+  font-weight: 300;
+  font-size: 38px;
+  text-align: center;
+}
+
+.text-card {
+  font-weight: 200;
+  font-size: 26px;
+  text-align: center;
 }
