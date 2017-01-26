@@ -7,7 +7,7 @@ $my-primary: (
   200: #b39ddb,
   300: #9575cd,
   400: #7e57c2,
-  500: #673ab7,
+  500: #1375bc,
   600: #5e35b1,
   700: #512da8,
   800: #4527a0,
@@ -46,9 +46,15 @@ $theme: md-light-theme($primary, $accent);
 // Include all theme styles for the components.
 @include angular-material-theme($theme);
 
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i');
+
 body {
   margin: 0px;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: 'Source Sans Pro', Roboto, "Helvetica Neue", sans-serif;
+}
+
+md-card{
+  font-family: 'Source Sans Pro', Roboto, "Helvetica Neue", sans-serif !important;
 }
 
 md-dialog-container {
@@ -74,7 +80,8 @@ md-divider {
   border-top-color: rgba(0, 0, 0, 0.12);
 }
 
-.md-input-placeholder.md-float.md-empty.md-warn, .md-input-placeholder.md-float.md-warn {
+.md-input-placeholder.md-float.md-empty.md-warn,
+.md-input-placeholder.md-float.md-warn {
   color: red!important;
 }
 
@@ -83,4 +90,122 @@ md-divider {
     border-color: red;
   }
   color: red!important;
+}
+
+.md-display-4 {
+  font-size: 56px;
+  font-weight: 300;
+  letter-spacing: -.01em;
+  line-height: 112px;
+  background: #F5F5F5;
+  @media only screen and (max-width: 1500px) {
+    font-size: 45px;
+  }
+  @media only screen and (max-width: 1200px) {
+    font-size: 34px;
+  }
+  @media only screen and (max-width: 900px) {
+    font-size: 24px;
+  }
+}
+
+.md-display-1 {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 40px;
+  background: #F5F5F5;
+  @media only screen and (max-width: 1500px) {
+    font-size: 20px;
+  }
+  @media only screen and (max-width: 1200px) {
+    font-size: 16px;
+  }
+  @media only screen and (max-width: 900px) {
+    font-size: 12px;
+  }
+}
+
+.fixed-ratio-resize { /* basic responsive img */
+  margin-top: 30px;
+	max-width: 100%;
+	height: auto;
+	width: auto\9; /* IE8 */
+  @media only screen and (max-width: 600px) {
+    margin-top: 10px;
+	  max-width: 50%;
+  }
+}
+
+.fond {
+  height: 700px;
+  background-image:  url("assets/La-route2.jpg");
+  // background-size: 100% auto;
+  -webkit-background-size: cover;
+  background-size: cover;
+  background-position: center;
+}
+
+.title {
+  font-weight: 300;
+  font-size: 72px;
+  margin-left: 40px;
+  @media only screen and (max-width: 1700px) {
+    font-size: 64px;
+  }
+  @media only screen and (max-width: 1500px) {
+    font-size: 50px;
+  }
+  @media only screen and (max-width: 1200px) {
+    font-size: 42px;
+  }
+  @media only screen and (max-width: 1000px) {
+    font-size: 38px;
+  }
+  @media only screen and (max-width: 600px) {
+    text-align: center;
+    color: white;
+    margin-left: 0px;
+  }
+}
+
+.subtitle {
+  font-weight: 200;
+  font-size: 48px;
+  margin-left: 40px;
+  @media only screen and (max-width: 1700px) {
+    font-size: 42px;
+  }
+  @media only screen and (max-width: 1500px) {
+    font-size: 38px;
+  }
+  @media only screen and (max-width: 1200px) {
+    font-size: 34px;
+  }
+  @media only screen and (max-width: 1000px) {
+    font-size: 26px;
+  }
+  @media only screen and (max-width: 600px) {
+    text-align: center;
+    color: white;
+    margin-left: 0px;
+  }
+}
+.button-read-more {
+  margin-left: 60px;
+  @media only screen and (max-width: 600px) {
+    text-align: center;
+    margin-left: 0px;
+  }
+}
+
+.title-card {
+  font-weight: 300;
+  font-size: 38px;
+  text-align: center;
+}
+
+.text-card {
+  font-weight: 200;
+  font-size: 26px;
+  text-align: center;
 }

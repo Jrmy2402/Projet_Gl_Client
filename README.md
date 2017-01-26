@@ -1,3 +1,27 @@
+# Lancement du client
+
+**ng serve**
+
+
+# Tuto git pour push des modifs
+
+**git status**
+ -- pour voir les modifs
+
+**git add .**                            -- sauvegarde les modifs des fichiers qui seront envoyés par le push
+
+**git commit -m "description commit"**   -- enregistre les modifs en donnant une description
+
+**git push origin master**               -- envoie des modifs sur le git sur la branche principale
+
+
+**git pull origin master**               -- récupération des modifs
+
+
+**git fetch branche**               -- changement de branche
+
+
+
 # Client
 
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.25.5.
