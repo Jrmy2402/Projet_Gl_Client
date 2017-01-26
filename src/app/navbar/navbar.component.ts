@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MdDialog, MdDialogRef } from '@angular/material';
+import { DialogConnexionComponent } from '../dialog-connexion/dialog-connexion.component';
 import { DialogInscriptionComponent } from '../dialog-inscription/dialog-inscription.component';
+import { AuthService } from '../shared/auth/auth.service';
+
 
 @Component({
   selector: 'app-navbar',
@@ -9,18 +12,16 @@ import { DialogInscriptionComponent } from '../dialog-inscription/dialog-inscrip
 })
 export class NavbarComponent implements OnInit {
 
-  // dialogRef: MdDialogRef<DialogInscriptionComponent>;
-
-  constructor(public dialog: MdDialog) { }
+  constructor(public dialogConnexion: MdDialog, public dialogInscription: MdDialog, private authService: AuthService) { }
 
   ngOnInit() {
   }
 
   openDialogInscription() {
-    let dialogRef = this.dialog.open(DialogInscriptionComponent);
-    dialogRef.afterClosed().subscribe(result => {
-      // this.selectedOption = result;
-    });
+    this.dialogInscription.open(DialogInscriptionComponent);
+  }
+  openDialogConnexion() {
+    this.dialogConnexion.open(DialogConnexionComponent);
   }
 
 }

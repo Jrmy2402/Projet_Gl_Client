@@ -12,6 +12,8 @@ import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { DialogInscriptionComponent } from './dialog-inscription/dialog-inscription.component';
+import { AuthService } from './shared/auth/auth.service';
+import { DialogConnexionComponent } from './dialog-connexion/dialog-connexion.component';
 
 
 const appRoutes: Routes = [
@@ -24,7 +26,8 @@ const appRoutes: Routes = [
     AppComponent,
     PageNotFoundComponent,
     NavbarComponent,
-    DialogInscriptionComponent
+    DialogInscriptionComponent,
+    DialogConnexionComponent
   ],
   imports: [
     BrowserModule,
@@ -37,8 +40,9 @@ const appRoutes: Routes = [
   ],
   entryComponents: [
      DialogInscriptionComponent,
+     DialogConnexionComponent
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
