@@ -7,11 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PageAddVmComponent implements OnInit {
 
+  distribution: string;
   folders = [
     {
       name: 'Debian',
       description: 'Tototootot',
-      checked: true,
+      checked: false,
     },
     {
       name: 'Ubuntu',
@@ -72,6 +73,20 @@ export class PageAddVmComponent implements OnInit {
         elt.checked = !elt.checked;
       }
     }
+  }
+
+  addVM() {
+    for (const elt of this.folders) {
+      if (elt.checked === true) {
+        this.distribution = elt.name;
+      } 
+    }
+    for (const elt of this.applications) {
+      if (elt.checked === true) {
+        this.distribution = elt.name;
+      } 
+    }
+
   }
 
 }
