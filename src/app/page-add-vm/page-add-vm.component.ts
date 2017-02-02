@@ -7,9 +7,71 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PageAddVmComponent implements OnInit {
 
+  folders = [
+    {
+      name: 'Debian',
+      description: 'Tototootot',
+      checked: true,
+    },
+    {
+      name: 'Ubuntu',
+      description: 'xfjiiojij',
+      checked: false,
+    }
+  ];
+  applications = [
+    {
+      name: 'Node.js',
+      description: 'Tototootot',
+      checked: false,
+    },
+    {
+      name: 'Mongodb',
+      description: 'xfjiiojij',
+      checked: false,
+    },
+    {
+      name: 'PostgreSQL',
+      description: 'xfjiiojij',
+      checked: false,
+    }];
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  stopPropagationFolders(name: string, event: any, value: boolean) {
+    this.stopPropagation(event);
+    for (const elt of this.folders) {
+      if (elt.name !== name) {
+        elt.checked = false;
+      } else {
+        elt.checked = value;
+      }
+    }
+  }
+
+  stopPropagation(event: any) {
+    event.stopPropagation();
+  }
+
+  checkboxFolders(name: string, event: any) {
+    for (const elt of this.folders) {
+      if (elt.name === name) {
+        elt.checked = !elt.checked;
+      } else {
+        elt.checked = false;
+      }
+    }
+  }
+
+  checkboxApplications(name: string, event: any) {
+    for (const elt of this.applications) {
+      if (elt.name === name) {
+        elt.checked = !elt.checked;
+      }
+    }
   }
 
 }
