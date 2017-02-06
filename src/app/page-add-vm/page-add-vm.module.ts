@@ -5,6 +5,8 @@ import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 
+import { VmService } from '../shared/vm/vm.service';
+import { StripeService } from '../shared/stripe/stripe.service';
 
 @NgModule({
   imports: [
@@ -13,6 +15,10 @@ import { FormsModule } from '@angular/forms';
     FlexLayoutModule,
     FormsModule
   ],
-  declarations: [PageAddVmComponent]
+  declarations: [PageAddVmComponent],
+  providers: [
+    VmService,
+    StripeService
+  ],
 })
 export class PageAddVmModule { }

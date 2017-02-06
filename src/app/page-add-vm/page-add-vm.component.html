@@ -3,7 +3,7 @@
     <div class="flex-item margin-between width100" fxLayout="row" fxLayoutAlign="center center">
       <h1 class="title-card">Add a VM</h1>
     </div>
-    <form fxFlex="70" class="example-form" ngNoForm>
+    <div fxFlex="70" class="example-form" >
       <md-list class="listShadow">
         <div class="headerMe">
           <span class="title-liste">Choose your distribution :</span>
@@ -27,8 +27,8 @@
         </md-list-item>
       </md-list>
       <div class="marginTop marginBottom" fxLayout="row" fxLayoutAlign="end none">
-        <button md-raised-button color="primary" (click)="addVM()">Ajouter la Vm</button>
+        <button md-raised-button color="primary" (click)="addVM($event)">Ajouter la Vm</button>
       </div>
-    </form>
+    </div>
   </div>
 </div>
