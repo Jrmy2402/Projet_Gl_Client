@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { User } from './user';
 import { Observable } from 'rxjs/Observable';
+import { Router } from '@angular/router';
 import 'rxjs/add/observable/throw';
 
 @Injectable()
@@ -9,7 +10,7 @@ export class AuthService {
 
   private authUrl = 'api/users';  // URL to web API
 
-  constructor (private http: Http) {}
+  constructor (private http: Http, private router: Router) {}
 
   addUser (user: User): Observable< any > {
     const headers = new Headers({ 'Content-Type': 'application/json' });
@@ -37,6 +38,7 @@ export class AuthService {
 
   disconnect () {
       localStorage.removeItem('token');
+      this.router.navigate(['home']);
   }
 
   private extractData(res: Response) {

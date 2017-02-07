@@ -58,9 +58,16 @@ md-card{
 }
 
 md-dialog-container {
-  padding-top: 0px!important;
-  padding-left: 0px!important;
-  padding-right: 0px!important;
+  padding: 0px!important;
+  overflow-y:hidden!important;
+}
+md-dialog-content{
+    margin:0!important;
+    padding: 0!important;
+}
+
+.dialogButton{
+  margin-bottom: 8px;
 }
 
 /* class for width*/
@@ -208,4 +215,8 @@ md-divider {
   font-weight: 200;
   font-size: 26px;
   text-align: center;
+}
+
+.background-color-fond {
+  background-color: #f5f5f5;
 }

@@ -1,0 +1,34 @@
+<div fxLayout="row" fxLayoutAlign="center center">
+  <div fxFlex="80" class="flex-container" fxLayout="column" fxLayoutAlign="space-between stretch">
+    <div class="flex-item margin-between width100" fxLayout="row" fxLayoutAlign="center center">
+      <h1 class="title-card">Add a VM</h1>
+    </div>
+    <div fxFlex="70" class="example-form" >
+      <md-list class="listShadow">
+        <div class="headerMe">
+          <span class="title-liste">Choose your distribution :</span>
+        </div>
+        <md-list-item *ngFor="let folder of folders" class="border-list cursorPointer" (click)="checkboxFolders(folder.name, $event)">
+          <md-icon md-list-avatar>important_devices</md-icon>
+          <h4 md-line>{{folder.name}}</h4>
+          <p md-line> {{folder.description}} </p>
+          <md-checkbox class="example-margin" [(ngModel)]="folder.checked" (click)="stopPropagationFolders(folder.name, $event, folder.checked)"></md-checkbox>
+        </md-list-item>
+      </md-list>
+      <md-list class="listShadow marginTop">
+        <div class="headerMe">
+          <span class="title-liste">Choose your applications :</span>
+        </div>
+        <md-list-item *ngFor="let folder of applications" class="border-list cursorPointer" (click)="checkboxApplications(folder.name, $event)">
+          <md-icon md-list-avatar>important_devices</md-icon>
+          <h4 md-line>{{folder.name}}</h4>
+          <p md-line> {{folder.description}} </p>
+          <md-checkbox class="example-margin" [(ngModel)]="folder.checked" (click)="stopPropagation($event)"></md-checkbox>
+        </md-list-item>
+      </md-list>
+      <div class="marginTop marginBottom" fxLayout="row" fxLayoutAlign="end none">
+        <button md-raised-button color="primary" (click)="addVM($event)">Ajouter la Vm</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -10,8 +10,8 @@ import {
 import {
   NgForm
 } from '@angular/forms';
-import { AuthService } from '../shared/auth/auth.service';
-import { User } from '../shared/auth/user';
+import { AuthService } from '../auth/auth.service';
+import { User } from '../auth/user';
 
 @Component({
   selector: 'app-dialog-inscription',

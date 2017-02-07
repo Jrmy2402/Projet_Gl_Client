@@ -1,0 +1,31 @@
+<div fxLayout="row" fxLayoutAlign="center center" class="background-color-fond">
+  
+  <div fxFlex="80" fxFlex.xs="95" class="flex-container" fxLayout="column" fxLayoutAlign="center center">
+    <button routerLink="/addVm" color="primary" mdTooltip="Ajouter une VM!" mdTooltipPosition="before" md-mini-fab class="example-fab" >
+      <md-icon>add</md-icon>
+    </button>
+    <div class="flex-item margin-between width100" fxLayout="row" fxLayoutAlign="center center">
+        <h1 class="title-card">Vos VM</h1>
+    </div>
+    <div class="flex-item margin-between" *ngFor="let VM of myVM">
+      <md-card class="example-card">
+        <md-card-header>
+          <div md-card-avatar class="example-header-image"></div>
+          <md-card-title>{{VM.name}}</md-card-title>
+          <md-card-subtitle>{{VM.ip}}</md-card-subtitle>
+        </md-card-header>
+        <!--<img md-card-image src="assets/img/examples/shiba2.jpg">-->
+        <md-card-content>
+          <p>
+            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan. A small, agile dog that copes
+            very well with mountainous terrain, the Shiba Inu was originally bred for hunting.
+          </p>
+        </md-card-content>
+        <md-card-actions>
+          <button md-button routerLink="/accesVm/1">Info VM</button>
+          <button md-button>SHARE</button>
+        </md-card-actions>
+      </md-card>
+    </div>
+  </div>
+</div>

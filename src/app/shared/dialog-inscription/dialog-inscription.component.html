@@ -2,10 +2,10 @@
   <span>Inscription</span>
   <!-- This fills the remaining space of the current row -->
   <span class="example-fill-remaining-space"></span>
-  <md-icon (click)="closeDialog()" class="icon">clear</md-icon>
+  <md-icon md-dialog-close (click)="closeDialog()" class="icon">clear</md-icon>
   <!--<span>Right Aligned Text</span>-->
 </md-toolbar>
-<md-dialog-actions fxLayout="column" fxLayoutAlign="center center">
+<md-dialog-content fxLayout="column" fxLayoutAlign="center center">
   <form fxLayout="column" fxLayoutAlign="center center" #form="ngForm" (submit)="Inscription(form)">
     <span class="error margin-text-error">{{error}}</span>
     <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center" class="width90 widthphone">
@@ -38,7 +38,7 @@
     <button type="submit" md-raised-button class="width90 widthphone margin-button-inscription" color="primary" [disabled]="form.invalid">INSCRIPTION</button>
   </form>
   <md-divider class="width90"></md-divider>
-  <div fxFlex="90" fxLayout="row" fxLayoutAlign="space-between center" class="width90">
+  <div fxFlex="90" fxLayout="row" fxLayoutAlign="space-between center" class="width90 dialogButton">
     <div>
       Déjà membre VMRS ?
     </div>
@@ -46,4 +46,4 @@
       <button md-button color="primary">CONNEXION</button>
     </div>
   </div>
-</md-dialog-actions>
+</md-dialog-content>

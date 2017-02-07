@@ -9,7 +9,7 @@ import {
 } from '@angular/material';
 import {
   AuthService
-} from '../shared/auth/auth.service';
+} from '../auth/auth.service';
 
 
 @Component({
@@ -23,7 +23,7 @@ export class DialogConnexionComponent implements OnInit {
   password: string;
   error: string;
 
-  constructor(public dialogRef: MdDialogRef < DialogConnexionComponent >, 
+  constructor(public dialogRef: MdDialogRef < DialogConnexionComponent >,
   private authService: AuthService,
   public snackBar: MdSnackBar) {}
 

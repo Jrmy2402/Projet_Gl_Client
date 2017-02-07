@@ -1,0 +1,13 @@
+<md-toolbar color="primary">
+  <span routerLink="/" class="pointer">VMRS</span>
+  <!-- This fills the remaining space of the current row -->
+  <span class="example-fill-remaining-space"></span>
+  <div *ngIf="!authService.isLogged()" class="button-navbar">
+    <button md-button class="button-navbar" (click)="openDialogConnexion()">Connexion</button>
+    <button md-button class="button-navbar" (click)="openDialogInscription()">Inscription</button>  
+  </div>
+  <div *ngIf="authService.isLogged()" class="button-navbar">
+    <button md-button class="button-navbar" routerLink="/accesVm">Accés VM</button>
+    <button md-button class="button-navbar" (click)="authService.disconnect()">Déconnexion</button>   
+  </div>
+</md-toolbar>
