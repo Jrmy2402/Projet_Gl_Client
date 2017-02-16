@@ -13,6 +13,10 @@ import {
 import {
   StripeService
 } from '../shared/stripe/stripe.service';
+import { Application } from './appli.interface';
+import { Catalog } from './catalog.interface';
+
+
 
 @Component({
   selector: 'app-page-add-vm',
@@ -24,33 +28,9 @@ export class PageAddVmComponent implements OnInit {
   globalListener: any;
   distribution: string;
   applicationschoose: Array < string > = [];
-  folders = [{
-      name: 'Debian',
-      description: 'Tototootot',
-      checked: false,
-    },
-    {
-      name: 'Ubuntu',
-      description: 'xfjiiojij',
-      checked: false,
-    }
-  ];
-  applications = [{
-      name: 'Node.js',
-      description: 'Tototootot',
-      checked: false,
-    },
-    {
-      name: 'Mongodb',
-      description: 'xfjiiojij',
-      checked: false,
-    },
-    {
-      name: 'PostgreSQL',
-      description: 'xfjiiojij',
-      checked: false,
-    }
-  ];
+  catalogs: Array < Catalog > = [];
+  applications: Array < Application > = [];
+
 
   constructor(private vmService: VmService,
     public dialogCard: MdDialog,
@@ -58,11 +38,26 @@ export class PageAddVmComponent implements OnInit {
     private stripeService: StripeService
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.vmService.getApplication().subscribe(data => {
+      for (const d of data){
+        this.applications.push(d);
+      }
+    }, error => {
+      console.log('Réponse', error);
+    });
+    this.vmService.getCatalog().subscribe(data => {
+      for (const d of data){
+        this.catalogs.push(d);
+      }
+    }, error => {
+      console.log('Réponse', error);
+    });
+  }
 
   stopPropagationFolders(name: string, event: any, value: boolean) {
     this.stopPropagation(event);
-    for (const elt of this.folders) {
+    for (const elt of this.catalogs) {
       if (elt.name !== name) {
         elt.checked = false;
       } else {
@@ -76,7 +71,7 @@ export class PageAddVmComponent implements OnInit {
   }
 
   checkboxFolders(name: string, event: any) {
-    for (const elt of this.folders) {
+    for (const elt of this.catalogs) {
       if (elt.name === name) {
         elt.checked = !elt.checked;
       } else {
@@ -94,7 +89,7 @@ export class PageAddVmComponent implements OnInit {
   }
 
   saveVm(token: any) {
-    for (const elt of this.folders) {
+    for (const elt of this.catalogs) {
       if (elt.checked === true) {
         this.distribution = elt.name;
       }
@@ -109,13 +104,10 @@ export class PageAddVmComponent implements OnInit {
     this.vmService.addVM(this.distribution, this.applicationschoose, token)
       .subscribe(data => {
         console.log('Réponse', data);
-        // this.snackBar.open('Inscription réussie', 'ok', {
-        //   duration: 9000,
-        // });
-        // this.dialogRef.close();
+        this.applicationschoose = [];
       }, error => {
         console.log('Réponse', error);
-        // this.error = error;
+        this.applicationschoose = [];
       });
   }
 
