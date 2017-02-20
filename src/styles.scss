@@ -35,13 +35,13 @@ $my-primary: (
 );
 
 // Include non-theme styles for core.
-@include md-core();
+@include mat-core();
 
 // Define a theme.
-$primary: md-palette($my-primary);
-$accent:  md-palette($md-amber, A200, A100, A400);
+$primary: mat-palette($my-primary);
+$accent:  mat-palette($mat-amber, A200, A100, A400);
 
-$theme: md-light-theme($primary, $accent);
+$theme: mat-light-theme($primary, $accent);
 
 // Include all theme styles for the components.
 @include angular-material-theme($theme);
@@ -56,15 +56,15 @@ body {
   font-family: 'Source Sans Pro', Roboto, "Helvetica Neue", sans-serif;
 }
 
-md-card{
+mat-card{
   font-family: 'Source Sans Pro', Roboto, "Helvetica Neue", sans-serif !important;
 }
 
-md-dialog-container {
+mat-dialog-container {
   padding: 0px!important;
   overflow-y:hidden!important;
 }
-md-dialog-content{
+mat-dialog-content{
     margin:0!important;
     padding: 0!important;
 }
@@ -89,7 +89,7 @@ md-dialog-content{
   width: 100%;
 }
 
-md-divider {
+mat-divider {
   display: block;
   border-top-width: 1px;
   border-top-style: solid;
@@ -97,19 +97,19 @@ md-divider {
   border-top-color: rgba(0, 0, 0, 0.12);
 }
 
-.md-input-placeholder.md-float.md-empty.md-warn,
-.md-input-placeholder.md-float.md-warn {
+.mat-input-placeholder.mat-float.mat-empty.mat-warn,
+.mat-input-placeholder.mat-float.mat-warn {
   color: red!important;
 }
 
 .error {
-  .md-input-underline {
+  .mat-input-underline {
     border-color: red;
   }
   color: red!important;
 }
 
-.md-display-4 {
+.mat-display-4 {
   font-size: 56px;
   font-weight: 300;
   letter-spacing: -.01em;
@@ -126,7 +126,7 @@ md-divider {
   }
 }
 
-.md-display-1 {
+.mat-display-1 {
   font-size: 24px;
   font-weight: 400;
   line-height: 40px;

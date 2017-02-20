@@ -40,7 +40,7 @@ import { AppRoutingModule } from './app-routing.module';
     PageVmModule,
     PageAddVmModule,
     AdminModule,
-    MaterialModule.forRoot(),
+    MaterialModule,
     FlexLayoutModule.forRoot(),
     AppRoutingModule,
     ReactiveFormsModule
