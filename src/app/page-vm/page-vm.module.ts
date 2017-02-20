@@ -6,6 +6,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 // import { RouterModule } from '@angular/router';
 import { InfoVmComponent } from './info-vm/info-vm.component';
 import { PageVmRoutingModule } from './page-vm-routing.module';
+import { VmService } from '../shared/vm/vm.service';
 
 
 
@@ -16,6 +17,9 @@ import { PageVmRoutingModule } from './page-vm-routing.module';
     FlexLayoutModule,
     PageVmRoutingModule
   ],
-  declarations: [PageVmComponent, InfoVmComponent]
+  declarations: [PageVmComponent, InfoVmComponent],
+  providers: [
+    VmService
+  ]
 })
 export class PageVmModule { }

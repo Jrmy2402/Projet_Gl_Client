@@ -25,11 +25,49 @@ export class VmService {
     }
   }
 
-  private extractData(res: Response) {
+  getApplication (): Observable< any > {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const options = {
+        headers: new Headers()
+      };
+      options.headers.set('Authorization', `Bearer ${token}`);
+      return this.http.get('api/applis', options)
+        .map(this.extractData)
+        .catch(this.handleError);
+    }
+  }
 
+  getCatalog (): Observable< any > {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const options = {
+        headers: new Headers()
+      };
+      options.headers.set('Authorization', `Bearer ${token}`);
+      return this.http.get('api/catalogs', options)
+        .map(this.extractData)
+        .catch(this.handleError);
+    }
+  }
+
+  getMyVm (): Observable< any > {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const options = {
+        headers: new Headers()
+      };
+      options.headers.set('Authorization', `Bearer ${token}`);
+      return this.http.get('api/users/meVm', options)
+        .map(this.extractData)
+        .catch(this.handleError);
+    }
+  }
+
+  private extractData(res: Response) {
     const body = res.json();
     // localStorage.setItem('token', body.token);
-    return body.data || { };
+    return body.data || body;
   }
 
   private handleError (error: Response | any) {

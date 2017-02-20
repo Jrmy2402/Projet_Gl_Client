@@ -10,6 +10,8 @@ export class AuthService {
 
   private authUrl = 'api/users';  // URL to web API
 
+  redirectUrl: string;
+
   constructor (private http: Http, private router: Router) {}
 
   addUser (user: User): Observable< any > {
