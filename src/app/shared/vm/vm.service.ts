@@ -58,14 +58,13 @@ export class VmService {
         headers: new Headers()
       };
       options.headers.set('Authorization', `Bearer ${token}`);
-      return this.http.get('api/catalogs', options)
+      return this.http.get('api/users/meVm', options)
         .map(this.extractData)
         .catch(this.handleError);
     }
   }
 
   private extractData(res: Response) {
-
     const body = res.json();
     // localStorage.setItem('token', body.token);
     return body.data || body;

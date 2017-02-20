@@ -10,6 +10,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HomeModule } from './home/home.module';
 import { PageVmModule } from './page-vm/page-vm.module';
 import { PageAddVmModule } from './page-add-vm/page-add-vm.module';
+import { AdminModule } from './admin/admin.module';
 
 import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './page-not-found.component';
@@ -38,6 +39,7 @@ import { AppRoutingModule } from './app-routing.module';
     HttpModule,
     PageVmModule,
     PageAddVmModule,
+    AdminModule,
     MaterialModule.forRoot(),
     FlexLayoutModule.forRoot(),
     AppRoutingModule,
