@@ -54,6 +54,15 @@ body {
   font-family: 'Source Sans Pro', Roboto, "Helvetica Neue", sans-serif;
 }
 
+footer {
+  height: 120px;
+  width: 100%;
+  background-color: #263238;
+  position:absolute;
+  bottom:0;
+  padding-top: 50px;
+}
+
 md-card{
   font-family: 'Source Sans Pro', Roboto, "Helvetica Neue", sans-serif !important;
 }
@@ -294,11 +303,6 @@ md-divider {
     text-align: center;
     margin-left: 0px;
   }
-}
-
-.footer {
-  height: 120px;
-  background-color: #263238;
 }
 
 .link-footer{
