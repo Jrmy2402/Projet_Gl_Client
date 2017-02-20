@@ -43,6 +43,7 @@ $accent:  md-palette($md-amber, A200, A100, A400);
 
 $theme: md-light-theme($primary, $accent);
 
+
 // Include all theme styles for the components.
 @include angular-material-theme($theme);
 
@@ -133,12 +134,10 @@ md-divider {
 }
 
 .fixed-ratio-resize { /* basic responsive img */
-  margin-top: 30px;
 	max-width: 100%;
 	height: auto;
 	width: auto\9; /* IE8 */
   @media only screen and (max-width: 600px) {
-    margin-top: 10px;
 	  max-width: 50%;
   }
 }
@@ -244,4 +243,66 @@ md-divider {
   -webkit-background-size: cover;
   background-size: cover;
   background-position: center;
+}
+
+.title-mobile {
+  font-weight: 200;
+  font-size: 48px;
+  margin-left: 50px;
+  color: white;
+  @media only screen and (max-width: 1700px) {
+    font-size: 42px;
+  }
+  @media only screen and (max-width: 1500px) {
+    font-size: 38px;
+  }
+  @media only screen and (max-width: 1200px) {
+    font-size: 34px;
+  }
+  @media only screen and (max-width: 1000px) {
+    font-size: 26px;
+  }
+  @media only screen and (max-width: 600px) {
+    text-align: center;
+    margin-left: 20px;
+  }
+}
+
+.fond-isen {
+  @media only screen and (max-width: 600px) {
+    margin-bottom: 20px;
+  }
+}
+
+.title-isen {
+  font-weight: 200;
+  font-size: 42px;
+  margin-left: 20px;
+  @media only screen and (max-width: 1700px) {
+    font-size: 38px;
+  }
+  @media only screen and (max-width: 1500px) {
+    font-size: 34px;
+  }
+  @media only screen and (max-width: 1200px) {
+    font-size: 30px;
+  }
+  @media only screen and (max-width: 1000px) {
+    font-size: 26px;
+  }
+  @media only screen and (max-width: 600px) {
+    text-align: center;
+    margin-left: 0px;
+  }
+}
+
+.footer {
+  height: 120px;
+  background-color: #263238;
+}
+
+.link-footer{
+  font-weight: 300;
+  font-size: 20px;
+  color:white;
 }
