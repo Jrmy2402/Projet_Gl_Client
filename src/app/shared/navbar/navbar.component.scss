@@ -7,3 +7,13 @@
 .pointer{
     cursor: pointer;
 }
+
+md-toolbar {
+  position: relative;
+  z-index: 10;
+}
+
+.logo {
+  height: 120px;
+  margin-top: 55px;
+}

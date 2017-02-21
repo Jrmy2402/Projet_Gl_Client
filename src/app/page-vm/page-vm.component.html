@@ -10,7 +10,10 @@
     <div class="flex-item margin-between" *ngFor="let VM of myVM">
       <md-card class="example-card">
         <md-card-header>
-          <div md-card-avatar class="example-header-image"></div>
+          <div md-card-avatar class="example-header-image">
+            <div *ngIf="VM.name === 'Ubuntu'"><img src="../../assets/ubuntu.png"></div>
+            <div *ngIf="VM.name === 'Debian'"><img src="../../assets/debian.png"></div>
+          </div>
           <md-card-title>{{VM.OS}}</md-card-title>
           <md-card-subtitle>{{VM.name}}</md-card-subtitle>
         </md-card-header>
