@@ -58,10 +58,8 @@ body {
 }
 
 footer {
-  height: 120px;
   width: 100%;
   background-color: #263238;
-  position:absolute;
   bottom:0;
   padding-top: 50px;
 }
@@ -319,4 +317,13 @@ md-divider {
   font-weight: 300;
   font-size: 20px;
   color:white;
+}
+
+#copyright {
+  text-align: center;
+  font-weight: 200;
+  font-size: 21px;
+  background-color: #1375bc;
+  color: white;
+  margin-top: 50px;
 }

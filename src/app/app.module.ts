@@ -22,7 +22,6 @@ import { DialogInscriptionComponent } from './shared/dialog-inscription/dialog-i
 import { AuthService } from './shared/auth/auth.service';
 
 import { AppRoutingModule } from './app-routing.module';
-import { FooterComponent } from './shared/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -30,8 +29,7 @@ import { FooterComponent } from './shared/footer/footer.component';
     PageNotFoundComponent,
     NavbarComponent,
     DialogInscriptionComponent,
-    DialogConnexionComponent,
-    FooterComponent,
+    DialogConnexionComponent
     // DialogPaymentComponent
   ],
   imports: [

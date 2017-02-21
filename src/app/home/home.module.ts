@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
 import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { FooterComponent } from './../shared/footer/footer.component';
 
 
 @NgModule({
@@ -11,6 +12,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MaterialModule,
     FlexLayoutModule
   ],
-  declarations: [HomeComponent]
+  declarations: [
+    HomeComponent,
+    FooterComponent
+    ]
 })
 export class HomeModule { }
