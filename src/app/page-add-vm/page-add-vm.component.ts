@@ -5,7 +5,8 @@ import {
 } from '@angular/core';
 import {
   MdDialog,
-  MdDialogRef
+  MdDialogRef,
+  MdSnackBar
 } from '@angular/material';
 import {
   VmService
@@ -13,9 +14,13 @@ import {
 import {
   StripeService
 } from '../shared/stripe/stripe.service';
-import { Application } from './appli.interface';
-import { Catalog } from './catalog.interface';
-
+import {
+  Application
+} from './appli.interface';
+import {
+  Catalog
+} from './catalog.interface';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -35,19 +40,21 @@ export class PageAddVmComponent implements OnInit {
   constructor(private vmService: VmService,
     public dialogCard: MdDialog,
     private renderer: Renderer,
-    private stripeService: StripeService
+    private stripeService: StripeService,
+    public snackBar: MdSnackBar,
+    private router: Router
   ) {}
 
   ngOnInit() {
     this.vmService.getApplication().subscribe(data => {
-      for (const d of data){
+      for (const d of data) {
         this.applications.push(d);
       }
     }, error => {
       console.log('Réponse', error);
     });
     this.vmService.getCatalog().subscribe(data => {
-      for (const d of data){
+      for (const d of data) {
         this.catalogs.push(d);
       }
     }, error => {
@@ -100,14 +107,20 @@ export class PageAddVmComponent implements OnInit {
       }
     }
     console.log(this.distribution, this.applicationschoose);
-    debugger
     this.vmService.addVM(this.distribution, this.applicationschoose, token)
       .subscribe(data => {
         console.log('Réponse', data);
         this.applicationschoose = [];
+        this.snackBar.open('Payement : Réussi, la vm sera disponible dans quelques minutes', 'ok', {
+          duration: 9000,
+        });
+        this.router.navigate(['accesVm']);
       }, error => {
         console.log('Réponse', error);
         this.applicationschoose = [];
+        this.snackBar.open('Erreur : Payement, veuillez réessayer', 'ok', {
+          duration: 9000,
+        });
       });
   }
 
