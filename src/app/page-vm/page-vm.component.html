@@ -15,18 +15,18 @@
             <div *ngIf="VM.name === 'Debian'"><img src="../../assets/debian.png"></div>
           </div>
           <md-card-title>{{VM.OS}}</md-card-title>
-          <md-card-subtitle>{{VM.name}}</md-card-subtitle>
+          <md-card-subtitle>{{VM.name}}</md-card-subtitle>        
+          <md-card-actions>
+            <button md-raised-button color="primary" routerLink="/accesVm/1" class="bouton_info_vm">+ D'INFOS</button>
+          </md-card-actions>
         </md-card-header>
         <md-card-content>
-          <p>
-            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan. A small, agile dog that copes
-            very well with mountainous terrain, the Shiba Inu was originally bred for hunting.
-          </p>
+          <div class="flex-container" fxLayout="row" fxLayoutAlign="center center" style="width:100%">
+            <div class="flex-item" fxFlex="30" fxLayout="column" fxLayoutAlign="center center">beuteu1</div>
+            <div class="flex-item" fxFlex="30" fxLayout="column" fxLayoutAlign="center center">beuteu2</div>
+            <div class="flex-item" fxFlex="30" fxLayout="column" fxLayoutAlign="center center">beuteu3</div>
+          </div>
         </md-card-content>
-        <md-card-actions>
-          <button md-button routerLink="/accesVm/1">Info VM</button>
-          <!--<button md-button>SHARE</button>-->
-        </md-card-actions>
       </md-card>
     </div>
     <div *ngIf="load === false && myVM.length === 0"  class="flex-item margin-between">
