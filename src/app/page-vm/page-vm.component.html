@@ -7,7 +7,7 @@
     <div class="flex-item margin-between width100" fxLayout="row" fxLayoutAlign="center center">
         <h1 class="title-card">Vos VM</h1>
     </div>
-    <div class="flex-item margin-between" *ngFor="let VM of myVM">
+    <div class="flex-item margin-between" *ngFor="let VM of myVM" style="width: 100%">
       <md-card class="example-card">
         <md-card-header>
           <div md-card-avatar class="example-header-image">
@@ -22,15 +22,28 @@
         </md-card-header>
         <md-card-content>
           <div class="flex-container" fxLayout="row" fxLayoutAlign="center center" style="width:100%">
-            <div class="flex-item" fxFlex="30" fxLayout="column" fxLayoutAlign="center center">beuteu1</div>
-            <div class="flex-item" fxFlex="30" fxLayout="column" fxLayoutAlign="center center">beuteu2</div>
-            <div class="flex-item" fxFlex="30" fxLayout="column" fxLayoutAlign="center center">beuteu3</div>
+            <div class="flex-item info_vm" fxFlex="30" fxLayout="row" fxLayoutAlign="center center">
+              <div class="flex-item" fxLayout="column">@IP : </div>
+              <div class="flex-item detail_info_vm" fxLayout="column">{{VM.ip}}</div>
+              <div class="flex-item detail_info_vm" fxLayout="column" *ngIf="VM.ip === ''" style="color: darkorange">Deployment in progress</div>
+            </div>
+            <div class="flex-item info_vm" fxFlex="30" fxLayout="row" fxLayoutAlign="center center">
+              <div class="flex-item" fxLayout="column">Port : </div>
+              <div class="flex-item detail_info_vm" fxLayout="column">{{VM.port}}</div>
+              <div class="flex-item detail_info_vm" fxLayout="column" *ngIf="VM.port === ''" style="color: darkorange">Deployment in progress</div>
+            </div>
+            <div class="flex-item info_vm" fxFlex="30" fxLayout="row" fxLayoutAlign="center center">
+              <div class="flex-item" fxLayout="column">Status : </div>
+              <div class="flex-item detail_info_vm" fxLayout="column" *ngIf="VM.info === 'Off'" style="color: red">Off</div>
+              <div class="flex-item detail_info_vm" fxLayout="column" *ngIf="VM.info === 'On'" style="color: green">On</div>
+              <div class="flex-item detail_info_vm" fxLayout="column" *ngIf="VM.info === 'Loading'" style="color: darkorange">Deployment in progress</div>
+            </div>
           </div>
         </md-card-content>
       </md-card>
     </div>
     <div *ngIf="load === false && myVM.length === 0"  class="flex-item margin-between">
-      Vous avez pas encore de VM
+      Vous n'avez pas encore de VM
     </div>
   </div>
 </div>
