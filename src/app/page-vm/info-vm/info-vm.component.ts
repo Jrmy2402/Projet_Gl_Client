@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, Params, ActivatedRoute } from '@angular/router';
+import {
+  VmService
+} from '../../shared/vm/vm.service';
 
 @Component({
   selector: 'app-info-vm',
@@ -7,9 +11,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InfoVmComponent implements OnInit {
 
-  constructor() { }
+  myVM: any;
+  load: Boolean = true;
 
-  ngOnInit() {
+  constructor(private activatedRoute: ActivatedRoute, private vmService: VmService ) {
   }
 
+  ngOnInit() {
+    this.activatedRoute.params.subscribe((params: Params) => {
+      let Id = params['id'];
+      console.log(Id);
+      this.vmService.getInfoVm(Id).subscribe(data => {
+        this.myVM = data;
+        console.log(data);
+        // for (const tab of data){
+        //   console.log(tab);
+        //   this.myVM.push(tab);
+        // }
+        this.load = false;
+      }, err => console.log(err));
+    });
+  }
 }
