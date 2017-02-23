@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
+
 import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -41,7 +42,7 @@ import { AppRoutingModule } from './app-routing.module';
     PageAddVmModule,
     AdminModule,
     MaterialModule,
-    FlexLayoutModule.forRoot(),
+    FlexLayoutModule,
     AppRoutingModule,
     ReactiveFormsModule
   ],

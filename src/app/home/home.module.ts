@@ -15,6 +15,6 @@ import { FooterComponent } from './../shared/footer/footer.component';
   declarations: [
     HomeComponent,
     FooterComponent
-    ]
+  ]
 })
 export class HomeModule { }
