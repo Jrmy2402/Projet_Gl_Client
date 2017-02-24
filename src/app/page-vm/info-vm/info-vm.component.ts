@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy} from '@angular/core';
 import { Router, Params, ActivatedRoute } from '@angular/router';
+import { InfoVm } from './info-vm.interface';
 import {
   VmService
 } from '../../shared/vm/vm.service';
@@ -13,7 +14,7 @@ import * as io from 'socket.io-client';
 })
 export class InfoVmComponent implements OnInit {
 
-  myVM: any;
+  myVM: InfoVm;
   load: Boolean = true;
   public socket;
 
@@ -24,12 +25,6 @@ export class InfoVmComponent implements OnInit {
     this.activatedRoute.params.subscribe((params: Params) => {
       const Id = params['id'];
       console.log(Id);
-      // this.vmService.getInfoVm(Id).subscribe(data => {
-      //   this.myVM = data;
-      //   console.log(data);
-      //   this.load = false;
-      // }, err => console.log(err));
-
       // this.connection =
       this.socket = io({ 'path': '/sock' });
       this.socket.emit('statsVm', Id);
@@ -39,6 +34,15 @@ export class InfoVmComponent implements OnInit {
       //   console.log(message);
       //   // this.messages.push(message);
       // });
+      this.vmService.getInfoVm(Id).subscribe(data => {
+        this.myVM = data.stats;
+        console.log(this.myVM);
+        // for (const tab of data){
+        //   console.log(tab);
+        //   this.myVM.push(tab);
+        // }
+        this.load = false;
+      }, err => console.log(err));
     });
   }
 
