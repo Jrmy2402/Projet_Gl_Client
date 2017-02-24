@@ -2,12 +2,15 @@ import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions, URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs/Subject';
+import * as io from 'socket.io-client';
 import 'rxjs/add/observable/throw';
 
 @Injectable()
 export class VmService {
 
   private vmUrl = 'api/users/addvm';  // URL to web API
+  private socket;
 
   constructor (private http: Http, private router: Router) {}
 
@@ -63,18 +66,33 @@ export class VmService {
         .catch(this.handleError);
     }
   }
-  
-  getInfoVm (id:string): Observable< any > {
+
+  getInfoVm (id: string): Observable< any > {
     const token = localStorage.getItem('token');
     if (token) {
       const options = {
         headers: new Headers()
       };
       options.headers.set('Authorization', `Bearer ${token}`);
-      return this.http.get('api/users/meVm/${id}', options)
+      return this.http.get(`api/users/meVm/${id}`, options)
         .map(this.extractData)
         .catch(this.handleError);
     }
+  }
+
+  getInfoVmSocket() {
+    // const observable = new Observable(observer => {
+      // const host: string = window.location.protocol + '//' + window.location.hostname + ':' + window.location.port + '/sock';
+      this.socket = io.connect('http://localhost:9000');
+      // debugger
+    //   this.socket.on('infoVm', (data) => {
+    //     observer.next(data);
+    //   });
+    //   return () => {
+    //     this.socket.disconnect();
+    //   };
+    // });
+    // return observable;
   }
 
   private extractData(res: Response) {
