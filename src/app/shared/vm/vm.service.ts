@@ -71,7 +71,7 @@ export class VmService {
         headers: new Headers()
       };
       options.headers.set('Authorization', `Bearer ${token}`);
-      return this.http.get('api/users/meVm/${id}', options)
+      return this.http.get(`api/users/meVm/${id}`, options)
         .map(this.extractData)
         .catch(this.handleError);
     }

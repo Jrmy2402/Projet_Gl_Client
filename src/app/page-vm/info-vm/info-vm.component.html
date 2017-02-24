@@ -1,46 +1,60 @@
 <div  fxLayout="row" fxLayoutAlign="center start" class="background-color-fond container-child">
-  <div fxFlex="90" fxFlex.xs="95" class="flex-container" fxLayout="column" fxLayoutAlign="center center">
+  <div fxFlex="80" fxFlex.xs="95" class="flex-container" fxLayout="column" fxLayoutAlign="center center">
     <div class="flex-item margin-between width100" fxLayout="row" fxLayoutAlign="center center">
         <h1 class="title-card">VM Informations</h1>
     </div>
+    <md-spinner color="primary" mode="indeterminate" *ngIf="!myVM"></md-spinner>
     <div class="flex-item margin-between" style="width: 100%">
-      <md-card class="example-card">
+      <md-card class="example-card" *ngIf="myVM">
         <md-card-header>
           <div md-card-avatar class="example-header-image">
-            <!--<div *ngIf="VM.name === 'Ubuntu'"><img src="../../assets/ubuntu.png"></div>
-            <div *ngIf="VM.name === 'Debian'"><img src="../../assets/debian.png"></div>-->
-            <div><img src="../../assets/ubuntu.png"></div>
+            <div *ngIf="myVM.name === 'Ubuntu'"><img src="../../assets/ubuntu.png"></div>
+            <div *ngIf="myVM.name === 'Debian'"><img src="../../assets/debian.png"></div>
           </div>
           <md-card-title>{{myVM.OS}}</md-card-title>
-          <md-card-subtitle>Name VM</md-card-subtitle>        
-          <md-card-actions>
-            <button md-raised-button color="primary" routerLink="/accesVm/1" class="bouton_info_vm">+ D'INFOS</button>
-          </md-card-actions>
+          <md-card-subtitle>{{myVM.name}}</md-card-subtitle>
         </md-card-header>
         <md-card-content>
-          <!--<div class="flex-container" fxLayout="row" fxLayoutAlign="center center" style="width:100%">
+          <div class="flex-container" fxLayout="row" fxLayoutAlign="center center" style="width:100%">
             <div class="flex-item info_vm" fxFlex="30" fxLayout="row" fxLayoutAlign="center center">
               <div class="flex-item" fxLayout="column">@IP : </div>
-              <div class="flex-item detail_info_vm" fxLayout="column">@ip</div>
-              <div class="flex-item detail_info_vm" fxLayout="column" *ngIf="VM.ip === ''" style="color: darkorange">Deployment in progress</div>
+              <div class="flex-item detail_info_vm" fxLayout="column">{{myVM.ip}}</div>
+              <div class="flex-item detail_info_vm" fxLayout="column" *ngIf="myVM.ip === ''" style="color: darkorange">Deployment in progress</div>
             </div>
             <div class="flex-item info_vm" fxFlex="30" fxLayout="row" fxLayoutAlign="center center">
               <div class="flex-item" fxLayout="column">Port : </div>
-              <div class="flex-item detail_info_vm" fxLayout="column">{{VM.port}}</div>
-              <div class="flex-item detail_info_vm" fxLayout="column" *ngIf="VM.port === ''" style="color: darkorange">Deployment in progress</div>
+              <div class="flex-item detail_info_vm" fxLayout="column">{{myVM.port}}</div>
+              <div class="flex-item detail_info_vm" fxLayout="column" *ngIf="myVM.port === ''" style="color: darkorange">Deployment in progress</div>
             </div>
             <div class="flex-item info_vm" fxFlex="30" fxLayout="row" fxLayoutAlign="center center">
               <div class="flex-item" fxLayout="column">Status : </div>
-              <div class="flex-item detail_info_vm" fxLayout="column" *ngIf="VM.info === 'Off'" style="color: red">Off</div>
-              <div class="flex-item detail_info_vm" fxLayout="column" *ngIf="VM.info === 'On'" style="color: green">On</div>
-              <div class="flex-item detail_info_vm" fxLayout="column" *ngIf="VM.info === 'Loading'" style="color: darkorange">Deployment in progress</div>
+              <div class="flex-item detail_info_vm" fxLayout="column" *ngIf="myVM.info === 'Off'" style="color: red">Off</div>
+              <div class="flex-item detail_info_vm" fxLayout="column" *ngIf="myVM.info === 'On'" style="color: green">On</div>
+              <div class="flex-item detail_info_vm" fxLayout="column" *ngIf="myVM.info === 'Loading'" style="color: darkorange">Deployment in progress</div>
             </div>
-          </div>-->
+          </div>
+          <div class="flex-container" fxLayout="row" fxLayoutAlign="center center" style="width:100%; margin-top: 30px">
+            <div class="flex-item info_vm" fxFlex="30" fxLayout="row" fxLayoutAlign="center center">
+              <div class="flex-item" fxLayout="column">CPU : </div>
+              <div class="flex-item detail_info_vm" fxLayout="column">{{myVM.feedback.cpu}}</div>
+              <div class="flex-item detail_info_vm" fxLayout="column" *ngIf="myVM.port === ''" style="color: darkorange">Deployment in progress</div>
+            </div>
+            <div class="flex-item info_vm" fxFlex="30" fxLayout="row" fxLayoutAlign="center center">
+              <div class="flex-item" fxLayout="column">RAM : </div>
+              <div class="flex-item detail_info_vm" fxLayout="column">{{myVM.feedback.memory.usage}} / {{myVM.feedback.memory.total}}</div>
+              <div class="flex-item detail_info_vm" fxLayout="column" *ngIf="myVM.port === ''" style="color: darkorange">Deployment in progress</div>
+            </div>
+            <div class="flex-item info_vm" fxFlex="30" fxLayout="row" fxLayoutAlign="center center">
+              <div class="flex-item" fxLayout="column">ROM : </div>
+              <div class="flex-item detail_info_vm" fxLayout="column">{{myVM.feedback.block.usage}} / {{myVM.feedback.block.total}}</div>
+              <div class="flex-item detail_info_vm" fxLayout="column" *ngIf="myVM.port === ''" style="color: darkorange">Deployment in progress</div>
+            </div>
+          </div>
         </md-card-content>
+        <md-card-actions>
+          <button md-raised-button color="primary" routerLink="/accesVm/1" class="bouton_info_vm">+ D'INFOS</button>
+        </md-card-actions>
       </md-card>
     </div>
-    <!--<div *ngIf="load === false && myVM.length === 0"  class="flex-item margin-between">
-      Vous n'avez pas encore de VM
-    </div>-->
   </div>
 </div>

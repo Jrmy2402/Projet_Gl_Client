@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, Params, ActivatedRoute } from '@angular/router';
+import { InfoVm } from './info-vm.interface';
 import {
   VmService
 } from '../../shared/vm/vm.service';
@@ -11,7 +12,7 @@ import {
 })
 export class InfoVmComponent implements OnInit {
 
-  myVM: any;
+  myVM: InfoVm;
   load: Boolean = true;
 
   constructor(private activatedRoute: ActivatedRoute, private vmService: VmService ) {
@@ -22,8 +23,8 @@ export class InfoVmComponent implements OnInit {
       let Id = params['id'];
       console.log(Id);
       this.vmService.getInfoVm(Id).subscribe(data => {
-        this.myVM = data;
-        console.log(data);
+        this.myVM = data.stats;
+        console.log(this.myVM);
         // for (const tab of data){
         //   console.log(tab);
         //   this.myVM.push(tab);

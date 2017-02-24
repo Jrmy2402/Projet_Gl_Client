@@ -17,7 +17,7 @@
           <md-card-title>{{VM.OS}}</md-card-title>
           <md-card-subtitle>{{VM.name}}</md-card-subtitle>        
           <md-card-actions>
-            <button md-raised-button color="primary" routerLink="/accesVm/{{VM.idContainer}}" class="bouton_info_vm">+ D'INFOS</button>
+            <button md-raised-button color="primary" routerLink="/accesVm/{{VM._id}}" class="bouton_info_vm">+ D'INFOS</button>
           </md-card-actions>
         </md-card-header>
         <md-card-content>
@@ -35,7 +35,7 @@
             <div class="flex-item info_vm" fxFlex="30" fxLayout="row" fxLayoutAlign="center center">
               <div class="flex-item" fxLayout="column">Status : </div>
               <div class="flex-item detail_info_vm" fxLayout="column" *ngIf="VM.info === 'Off'" style="color: red">Off</div>
-              <div class="flex-item detail_info_vm" fxLayout="column" *ngIf="VM.info === 'On'" style="color: green">On</div>
+              <div class="flex-item detail_info_vm" fxLayout="column" *ngIf="VM.info === 'On'" style="color: limegreen">On</div>
               <div class="flex-item detail_info_vm" fxLayout="column" *ngIf="VM.info === 'Loading'" style="color: darkorange">Deployment in progress</div>
             </div>
           </div>
