@@ -21,6 +21,7 @@ import { DialogInscriptionComponent } from './shared/dialog-inscription/dialog-i
 // import { DialogPaymentComponent } from './shared/dialog-payment/dialog-payment.component';
 
 import { AuthService } from './shared/auth/auth.service';
+import { AuthModule } from './shared/auth/auth.module';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -44,7 +45,8 @@ import { AppRoutingModule } from './app-routing.module';
     MaterialModule,
     FlexLayoutModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AuthModule
   ],
   entryComponents: [
      DialogInscriptionComponent,

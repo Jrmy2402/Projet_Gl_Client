@@ -27,6 +27,7 @@
     "@types/socket.io-client": "^1.4.29",
     "@types/stripe": "0.0.34",
     "@types/stripe-checkout": "0.0.28",
+    "angular2-jwt": "^0.1.28",
     "body-parser": "^1.16.1",
     "core-js": "^2.4.1",
     "express": "^4.14.1",

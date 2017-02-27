@@ -4,13 +4,15 @@ import { User } from './user';
 import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
 import 'rxjs/add/observable/throw';
+import { tokenNotExpired, JwtHelper } from 'angular2-jwt';
 
 @Injectable()
 export class AuthService {
 
   private authUrl = 'api/users';  // URL to web API
-
+  jwtHelper: JwtHelper = new JwtHelper();
   redirectUrl: string;
+  role: string;
 
   constructor (private http: Http, private router: Router) {}
 
@@ -31,10 +33,14 @@ export class AuthService {
   }
 
   isLogged () {
-      if (localStorage.getItem('token')) {
-        return true;
-      } else {
-        return false;
+      return tokenNotExpired('token');
+  }
+
+  userRole () {
+      const token = localStorage.getItem('token');
+      if (token) {
+        this.role = this.jwtHelper.decodeToken(token).role;
+        return this.role;
       }
   }
 

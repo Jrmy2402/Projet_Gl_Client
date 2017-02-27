@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions, URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
-import { Subject } from 'rxjs/Subject';
+import { AuthHttp } from 'angular2-jwt';
 import * as io from 'socket.io-client';
 import 'rxjs/add/observable/throw';
 
@@ -12,87 +12,106 @@ export class VmService {
   private vmUrl = 'api/users/addvm';  // URL to web API
   private socket;
 
-  constructor (private http: Http, private router: Router) {}
+  constructor (private http: Http, private router: Router, public authHttp: AuthHttp) {}
 
   addVM (distribution: string, application: Array<string>, tokenCard: any): Observable< any > {
-    debugger
-    const token = localStorage.getItem('token');
-    if (token) {
-      const options = {
-        headers: new Headers()
-      };
-      options.headers.set('Authorization', `Bearer ${token}`);
-      return this.http.post(this.vmUrl, {distribution, application, tokenCard}, options)
-        .map(this.extractData)
-        .catch(this.handleError);
-    }
+    return this.authHttp.post('api/users/addvm', {distribution, application, tokenCard})
+            .map(this.extractData)
+            .catch(this.handleError);
+    // const token = localStorage.getItem('token');
+    // if (token) {
+    //   const options = {
+    //     headers: new Headers()
+    //   };
+    //   options.headers.set('Authorization', `Bearer ${token}`);
+    //   return this.http.post(this.vmUrl, {distribution, application, tokenCard}, options)
+    //     .map(this.extractData)
+    //     .catch(this.handleError);
+    // }
   }
 
   getApplication (): Observable< any > {
-    const token = localStorage.getItem('token');
-    if (token) {
-      const options = {
-        headers: new Headers()
-      };
-      options.headers.set('Authorization', `Bearer ${token}`);
-      return this.http.get('api/applis', options)
-        .map(this.extractData)
-        .catch(this.handleError);
-    }
+    return this.authHttp.get('api/applis')
+            .map(this.extractData)
+            .catch(this.handleError);
+    // const token = localStorage.getItem('token');
+    // if (token) {
+    //   const options = {
+    //     headers: new Headers()
+    //   };
+    //   options.headers.set('Authorization', `Bearer ${token}`);
+    //   return this.http.get('api/applis', options)
+    //     .map(this.extractData)
+    //     .catch(this.handleError);
+    // }
   }
 
   getCatalog (): Observable< any > {
-    const token = localStorage.getItem('token');
-    if (token) {
-      const options = {
-        headers: new Headers()
-      };
-      options.headers.set('Authorization', `Bearer ${token}`);
-      return this.http.get('api/catalogs', options)
-        .map(this.extractData)
-        .catch(this.handleError);
-    }
+    return this.authHttp.get('api/catalogs')
+            .map(this.extractData)
+            .catch(this.handleError);
+    // const token = localStorage.getItem('token');
+    // if (token) {
+    //   const options = {
+    //     headers: new Headers()
+    //   };
+    //   options.headers.set('Authorization', `Bearer ${token}`);
+    //   return this.http.get('api/catalogs', options)
+    //     .map(this.extractData)
+    //     .catch(this.handleError);
+    // }
   }
 
   getMyVm (): Observable< any > {
-    const token = localStorage.getItem('token');
-    if (token) {
-      const options = {
-        headers: new Headers()
-      };
-      options.headers.set('Authorization', `Bearer ${token}`);
-      return this.http.get('api/users/meVm', options)
-        .map(this.extractData)
-        .catch(this.handleError);
-    }
+    return this.authHttp.get('api/users/meVm')
+            .map(this.extractData)
+            .catch(this.handleError);
+    // const token = localStorage.getItem('token');
+    // if (token) {
+    //   const options = {
+    //     headers: new Headers()
+    //   };
+    //   options.headers.set('Authorization', `Bearer ${token}`);
+    //   return this.http.get('api/users/meVm', options)
+    //     .map(this.extractData)
+    //     .catch(this.handleError);
+    // }
   }
 
   getInfoVm (id: string): Observable< any > {
-    const token = localStorage.getItem('token');
-    if (token) {
-      const options = {
-        headers: new Headers()
-      };
-      options.headers.set('Authorization', `Bearer ${token}`);
-      return this.http.get(`api/users/meVm/${id}`, options)
-        .map(this.extractData)
-        .catch(this.handleError);
-    }
+    return this.authHttp.get(`api/users/meVm/${id}`)
+            .map(this.extractData)
+            .catch(this.handleError);
+    // const token = localStorage.getItem('token');
+    // if (token) {
+    //   const options = {
+    //     headers: new Headers()
+    //   };
+    //   options.headers.set('Authorization', `Bearer ${token}`);
+    //   return this.http.get(`api/users/meVm/${id}`, options)
+    //     .map(this.extractData)
+    //     .catch(this.handleError);
+    // }
   }
 
-  getInfoVmSocket() {
-    // const observable = new Observable(observer => {
-      // const host: string = window.location.protocol + '//' + window.location.hostname + ':' + window.location.port + '/sock';
-      this.socket = io.connect('http://localhost:9000');
-      // debugger
-    //   this.socket.on('infoVm', (data) => {
-    //     observer.next(data);
-    //   });
-    //   return () => {
-    //     this.socket.disconnect();
-    //   };
-    // });
-    // return observable;
+  getInfoVmSocket(Id: string): Observable< any > {
+    const observable = new Observable(observer => {
+      const token = localStorage.getItem('token');
+      if (token) {
+        this.socket = io({
+          'query': 'token=' + token,
+          'path': '/sock'
+        });
+        this.socket.emit('statsVm', Id);
+      }
+      this.socket.on('infoVm', (data) => {
+        observer.next(data);
+      });
+      return () => {
+        this.socket.disconnect();
+      };
+    });
+    return observable;
   }
 
   private extractData(res: Response) {

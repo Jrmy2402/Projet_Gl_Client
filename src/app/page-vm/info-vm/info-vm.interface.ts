@@ -1,5 +1,5 @@
 export interface InfoVm {
-    cpu : number;
-    OS : string;
-    name : string;
+    cpu: number;
+    OS: string;
+    name: string;
 }
