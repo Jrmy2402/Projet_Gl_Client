@@ -1,7 +1,7 @@
-<div  fxLayout="row" fxLayoutAlign="center start" class="background-color-fond container-child">
+<div fxLayout="row" fxLayoutAlign="center start" class="background-color-fond container-child">
   <div fxFlex="80" fxFlex.xs="95" class="flex-container" fxLayout="column" fxLayoutAlign="center center">
     <div class="flex-item margin-between width100" fxLayout="row" fxLayoutAlign="center center">
-        <h1 class="title-card">VM Informations</h1>
+      <h1 class="title-card">VM Informations</h1>
     </div>
     <md-spinner color="primary" mode="indeterminate" *ngIf="!myVM"></md-spinner>
     <div class="flex-item margin-between" style="width: 100%">
@@ -50,10 +50,14 @@
               <div class="flex-item detail_info_vm" fxLayout="column" *ngIf="myVM.port === ''" style="color: darkorange">Deployment in progress</div>
             </div>
           </div>
+          <div class="flex-container" fxLayout="row" fxLayoutAlign="end center" style="width:100%">
+            <button md-raised-button class="flex-item" fxFlex="12" fxLayout="column" color="primary" (click)="startVM(myVM._id)" class="button_vm"><i class="material-icons icon_svg">play_arrow</i>  Start VM</button>
+            <div class="flex-item" fxFlex="1" fxLayout="column"></div>
+            <button md-raised-button class="flex-item" fxFlex="12" fxLayout="column" color="primary" (click)="stopVM(myVM._id)" class="button_vm"><i class="material-icons icon_svg">pause</i>  Stop VM</button>
+            <div class="flex-item" fxFlex="1" fxLayout="column"></div>  
+            <button md-raised-button class="flex-item" fxFlex="12" fxLayout="column" color="primary" (click)="removeVM(myVM._id)" class="button_vm"><i class="material-icons icon_svg">clear</i>  Remove VM</button>
+          </div>
         </md-card-content>
-        <md-card-actions>
-          <button md-raised-button color="primary" routerLink="/accesVm/1" class="bouton_info_vm">+ D'INFOS</button>
-        </md-card-actions>
       </md-card>
     </div>
   </div>

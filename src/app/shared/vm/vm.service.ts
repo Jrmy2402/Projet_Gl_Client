@@ -94,6 +94,24 @@ export class VmService {
     // }
   }
 
+  startVm (id: string): Observable< any > {
+    return this.authHttp.get(`api/users/meVmStart/${id}`)
+            .map(this.extractData)
+            .catch(this.handleError);
+  }
+
+  stopVm (id: string): Observable< any > {
+    return this.authHttp.get(`api/users/meVmStop/${id}`)
+            .map(this.extractData)
+            .catch(this.handleError);
+  }
+  
+  removeVm (id: string): Observable< any > {
+    return this.authHttp.get(`api/users/meVmRemove/${id}`)
+            .map(this.extractData)
+            .catch(this.handleError);
+  }
+
   getInfoVmSocket(Id: string): Observable< any > {
     const observable = new Observable(observer => {
       const token = localStorage.getItem('token');
