@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {
   VmService
 } from '../shared/vm/vm.service';
@@ -8,24 +8,11 @@ import {
   templateUrl: './page-vm.component.html',
   styleUrls: ['./page-vm.component.scss']
 })
-export class PageVmComponent implements OnInit {
+export class PageVmComponent implements OnInit, OnDestroy {
 
-  //myVM = Array < String > 
   myVM: Array < string > = [];
   load: Boolean = true;
-  // [
-  //   {
-  //     name: 'Node.js',
-  //     ip: 'Tototootot',
-  //   },
-  //   {
-  //     name: 'Mongodb',
-  //     ip: 'xfjiiojij',
-  //   },
-  //   {
-  //     name: 'PostgreSQL',
-  //     ip: 'xfjiiojij',
-  //   }];
+  public connection;
 
   constructor(private vmService: VmService) { }
 
@@ -37,6 +24,17 @@ export class PageVmComponent implements OnInit {
       }
       this.load = false;
     }, err => console.log(err));
+    this.connection = this.vmService.getVmSocket().subscribe(data => {
+      this.myVM = [];
+      for (const tab of data){
+        console.log(tab);
+        this.myVM.push(tab);
+      }
+    });
+  }
+
+  ngOnDestroy () {
+    this.connection.unsubscribe();
   }
 
 }

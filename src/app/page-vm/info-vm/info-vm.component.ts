@@ -50,19 +50,19 @@ export class InfoVmComponent implements OnInit, OnDestroy {
     });
   }
 
-  startVM (Id:string) {
+  startVM (Id: string) {
     this.vmService.startVm(Id).subscribe(data => {
       console.log(data);
     }, err => console.log(err));
   }
 
-  stopVM (Id:string) {
+  stopVM (Id: string) {
     this.vmService.stopVm(Id).subscribe(data => {
       console.log(data);
     }, err => console.log(err));
   }
 
-  removeVM (Id:string) {
+  removeVM (Id: string) {
     this.vmService.removeVm(Id).subscribe(data => {
       console.log(data);
     }, err => console.log(err));
@@ -70,6 +70,5 @@ export class InfoVmComponent implements OnInit, OnDestroy {
 
   ngOnDestroy () {
     this.connection.unsubscribe();
-    // this.socket.unsubscribe();
   }
 }

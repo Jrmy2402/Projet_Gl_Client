@@ -34,64 +34,24 @@ export class VmService {
     return this.authHttp.get('api/applis')
             .map(this.extractData)
             .catch(this.handleError);
-    // const token = localStorage.getItem('token');
-    // if (token) {
-    //   const options = {
-    //     headers: new Headers()
-    //   };
-    //   options.headers.set('Authorization', `Bearer ${token}`);
-    //   return this.http.get('api/applis', options)
-    //     .map(this.extractData)
-    //     .catch(this.handleError);
-    // }
   }
 
   getCatalog (): Observable< any > {
     return this.authHttp.get('api/catalogs')
             .map(this.extractData)
             .catch(this.handleError);
-    // const token = localStorage.getItem('token');
-    // if (token) {
-    //   const options = {
-    //     headers: new Headers()
-    //   };
-    //   options.headers.set('Authorization', `Bearer ${token}`);
-    //   return this.http.get('api/catalogs', options)
-    //     .map(this.extractData)
-    //     .catch(this.handleError);
-    // }
   }
 
   getMyVm (): Observable< any > {
     return this.authHttp.get('api/users/meVm')
             .map(this.extractData)
             .catch(this.handleError);
-    // const token = localStorage.getItem('token');
-    // if (token) {
-    //   const options = {
-    //     headers: new Headers()
-    //   };
-    //   options.headers.set('Authorization', `Bearer ${token}`);
-    //   return this.http.get('api/users/meVm', options)
-    //     .map(this.extractData)
-    //     .catch(this.handleError);
-    // }
   }
 
   getInfoVm (id: string): Observable< any > {
     return this.authHttp.get(`api/users/meVm/${id}`)
             .map(this.extractData)
             .catch(this.handleError);
-    // const token = localStorage.getItem('token');
-    // if (token) {
-    //   const options = {
-    //     headers: new Headers()
-    //   };
-    //   options.headers.set('Authorization', `Bearer ${token}`);
-    //   return this.http.get(`api/users/meVm/${id}`, options)
-    //     .map(this.extractData)
-    //     .catch(this.handleError);
-    // }
   }
 
   startVm (id: string): Observable< any > {
@@ -105,7 +65,7 @@ export class VmService {
             .map(this.extractData)
             .catch(this.handleError);
   }
-  
+
   removeVm (id: string): Observable< any > {
     return this.authHttp.get(`api/users/meVmRemove/${id}`)
             .map(this.extractData)
@@ -126,6 +86,27 @@ export class VmService {
         observer.next(data);
       });
       return () => {
+        console.log('disconnect');
+        this.socket.disconnect();
+      };
+    });
+    return observable;
+  }
+
+  getVmSocket(): Observable< any > {
+    const observable = new Observable(observer => {
+      const token = localStorage.getItem('token');
+      if (token) {
+        this.socket = io({
+          'query': 'token=' + token,
+          'path': '/sock'
+        });
+      }
+      this.socket.on('vm:update', (data) => {
+        observer.next(data);
+      });
+      return () => {
+        console.log('disconnect');
         this.socket.disconnect();
       };
     });
