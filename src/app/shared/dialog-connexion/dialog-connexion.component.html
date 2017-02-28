@@ -20,7 +20,7 @@
         <md-hint *ngIf="msgPassword.invalid && msgPassword.touched" [ngStyle]="{'color': 'red'}" align="start">Ce champ est obligatoire.</md-hint>  
       </md-input-container>
     </div>
-    <button type="submit" md-raised-button class="width90 margin-button-inscription" color="primary" [disabled]="form.invalid">INSCRIPTION</button>
+    <button type="submit" md-raised-button class="width90 margin-button-inscription" color="primary" [disabled]="form.invalid">CONNEXION</button>
   </form>
   <md-divider class="width90"></md-divider>
   <div fxFlex="90" fxLayout="row" fxLayoutAlign="space-between center" class="width90 dialogButton">
@@ -28,7 +28,7 @@
       Vous n'avez pas de compte ?
     </div>
     <div>
-      <button md-button color="primary">CONNEXION</button>
+      <button md-button color="primary">INSCRIPTION</button>
     </div>
   </div>
 </md-dialog-content>

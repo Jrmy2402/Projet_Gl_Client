@@ -44,6 +44,11 @@ export class AuthService {
       }
   }
 
+  isAdmin () {
+      const role = this.userRole();
+      return role === 'Admin' ? true : false;
+  }
+
   disconnect () {
       localStorage.removeItem('token');
       this.router.navigate(['home']);

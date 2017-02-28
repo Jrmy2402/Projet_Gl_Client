@@ -7,7 +7,8 @@
     <button md-button class="button-navbar" (click)="openDialogInscription()">Inscription</button>  
   </div>
   <div *ngIf="authService.isLogged()" class="button-navbar">
-    <button md-button class="button-navbar" routerLink="/accesVm">Accès VM</button>
+    <button md-button *ngIf="!authService.isAdmin()" class="button-navbar" routerLink="/accesVm">Accès VM</button>
+    <button md-button *ngIf="authService.isAdmin()" class="button-navbar" routerLink="/accesVm">Accès VM</button>
     <button md-button class="button-navbar" (click)="authService.disconnect()">Déconnexion</button>   
   </div>
 </md-toolbar>
