@@ -26,9 +26,12 @@ export class InfoVmComponent implements OnInit, OnDestroy {
 
   myVM: any;
   load: Boolean = true;
+  load_circle: Boolean = false;
+  start: Boolean = false;
+  stop: Boolean = false;
   public connection;
 
-  constructor(private activatedRoute: ActivatedRoute, private vmService: VmService) {}
+  constructor(private activatedRoute: ActivatedRoute, private vmService: VmService, private router: Router) {}
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((params: Params) => {
@@ -37,34 +40,50 @@ export class InfoVmComponent implements OnInit, OnDestroy {
       this.connection = this.vmService.getInfoVmSocket(Id).subscribe(data => {
         console.log(data);
         this.myVM = data;
+        // if (this.load === true) {
+          if (this.myVM.info === 'On') {
+            this.start = false;
+            this.stop = true;
+          }
+          else {
+            this.start = true;
+            this.stop = false;
+          }
+        // }
+        this.load = false;
       });
-      // this.vmService.getInfoVm(Id).subscribe(data => {
-      //   this.myVM = data.stats;
-      //   console.log(this.myVM);
-      //   // for (const tab of data){
-      //   //   console.log(tab);
-      //   //   this.myVM.push(tab);
-      //   // }
-      //   this.load = false;
-      // }, err => console.log(err));
     });
   }
 
   startVM (Id: string) {
+    this.load_circle = true;
+    // this.stop = true;
     this.vmService.startVm(Id).subscribe(data => {
       console.log(data);
+      setTimeout(() => {
+        this.load_circle = false;
+      }, 3000);
+      // this.start = false;
     }, err => console.log(err));
   }
 
   stopVM (Id: string) {
+    this.load_circle = true;
+    // this.start = true;
     this.vmService.stopVm(Id).subscribe(data => {
       console.log(data);
+      setTimeout(() => {
+        this.load_circle = false;
+      }, 3000);
+      // this.stop = false;
     }, err => console.log(err));
   }
 
   removeVM (Id: string) {
+    this.load_circle = true;
     this.vmService.removeVm(Id).subscribe(data => {
       console.log(data);
+      this.router.navigate(['accesVm']);
     }, err => console.log(err));
   }
 
