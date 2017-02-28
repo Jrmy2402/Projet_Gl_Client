@@ -21,6 +21,9 @@
 **git fetch branche**               -- changement de branche
 
 
+**git checkout branche**                   -- changement de branche
+
+
 
 # Client
 
