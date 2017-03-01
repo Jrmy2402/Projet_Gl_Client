@@ -7,15 +7,17 @@ import { FormsModule } from '@angular/forms';
 
 import { VmService } from '../shared/vm/vm.service';
 import { StripeService } from '../shared/stripe/stripe.service';
+import { AddVmParticularComponent } from './add-vm-particular/add-vm-particular.component';
+import { AddVmTurnkeyComponent } from './add-vm-turnkey/add-vm-turnkey.component';
 
 @NgModule({
   imports: [
     CommonModule,
     MaterialModule,
     FlexLayoutModule,
-    FormsModule
+    FormsModule,
   ],
-  declarations: [PageAddVmComponent],
+  declarations: [PageAddVmComponent, AddVmParticularComponent, AddVmTurnkeyComponent],
   providers: [
     VmService,
     StripeService
