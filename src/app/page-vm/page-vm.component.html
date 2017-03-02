@@ -17,11 +17,11 @@
           <md-card-title>{{VM.OS}}</md-card-title>
           <md-card-subtitle>{{VM.name}}</md-card-subtitle>        
           <md-card-actions>
-            <button md-raised-button color="primary" routerLink="/accesVm/{{VM._id}}" class="bouton_info_vm" [disabled]="VM.info === 'Loading'">+ D'INFOS</button>
+            <button md-raised-button color="primary" routerLink="/accesVm/{{VM._id}}" class="bouton_info_vm" [disabled]="VM.info === 'Loading'" fxShow="false" fxShow.gt-xs>+ D'INFOS</button>
           </md-card-actions>
         </md-card-header>
         <md-card-content>
-          <div class="flex-container" fxLayout="row" fxLayoutAlign="center center" style="width:100%">
+          <div class="flex-container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center" style="width:100%">
             <div class="flex-item info_vm" fxFlex="30" fxLayout="row" fxLayoutAlign="center center">
               <div class="flex-item" fxLayout="column">@IP : </div>
               <div class="flex-item detail_info_vm" fxLayout="column">{{VM.ip}}</div>
@@ -39,6 +39,9 @@
               <div class="flex-item detail_info_vm" fxLayout="column" *ngIf="VM.info === 'Loading'" style="color: darkorange">Deployment in progress</div>
             </div>
           </div>
+          <md-card-actions>
+            <button fxLayoutAlign="center center" md-raised-button color="primary" routerLink="/accesVm/{{VM._id}}" [disabled]="VM.info === 'Loading'" fxHide.gt-xs>+ D'INFOS</button>
+          </md-card-actions>
         </md-card-content>
       </md-card>
     </div>
