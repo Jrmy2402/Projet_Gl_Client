@@ -67,10 +67,17 @@ export class VmService {
   }
 
   removeVm (id: string): Observable< any > {
-    return this.authHttp.get(`api/users/meVmRemove/${id}`)
+    return this.authHttp.delete(`api/users/meVmRemove/${id}`)
             .map(this.extractData)
             .catch(this.handleError);
   }
+
+  getAdminUser (): Observable< any > {
+    return this.authHttp.get(`api/users/`)
+            .map(this.extractData)
+            .catch(this.handleError);
+  }
+  
 
   getInfoVmSocket(Id: string): Observable< any > {
     const observable = new Observable(observer => {

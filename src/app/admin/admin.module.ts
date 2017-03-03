@@ -6,6 +6,7 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { AdminAddVmComponent } from './admin-add-vm/admin-add-vm.component';
+import { AdminListUserComponent } from './admin-list-user/admin-list-user.component';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { AdminAddVmComponent } from './admin-add-vm/admin-add-vm.component';
   declarations: [
     AdminComponent,
     AdminDashboardComponent,
-    AdminAddVmComponent
+    AdminAddVmComponent,
+    AdminListUserComponent
   ]
 })
 export class AdminModule { }
