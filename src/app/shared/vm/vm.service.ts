@@ -78,6 +78,11 @@ export class VmService {
             .catch(this.handleError);
   }
   
+  getTurnkey (): Observable< any > {
+    return this.authHttp.get(`api/turnkeys/`)
+            .map(this.extractData)
+            .catch(this.handleError);
+  }
 
   getInfoVmSocket(Id: string): Observable< any > {
     const observable = new Observable(observer => {
