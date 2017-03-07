@@ -77,10 +77,17 @@ md-dialog-content{
     padding: 0!important;
 }
 
+.app-admin-dashboard{
+    height: 100%;
+}
+
 .container-child{
     position: absolute;
     width: 100%;
     height: calc(100% - 64px);
+    @media (max-width: 600px) and (orientation: portrait) {
+      height: calc(100% - 56px);
+    }
     overflow-y: auto;
 }
 
