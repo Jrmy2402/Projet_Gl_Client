@@ -5,6 +5,7 @@ import { AdminComponent } from './admin.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { AdminAddVmComponent } from './admin-add-vm/admin-add-vm.component';
 import { AdminListUserComponent } from './admin-list-user/admin-list-user.component';
+import { AdminAddTurnkeyComponent } from './admin-add-turnkey/admin-add-turnkey.component'
 
 
 import { AuthGuard } from '../shared/auth/auth-guard.service';
@@ -20,8 +21,9 @@ const adminRoutes: Routes = [
         path: '',
         canActivateChild: [AuthGuard],
         children: [
-          { path: 'addVm', component: AdminAddVmComponent },
+          { path: 'manageOS', component: AdminAddVmComponent },
           { path: 'listUser', component: AdminListUserComponent },
+          { path: 'manageTurnkey', component: AdminAddTurnkeyComponent },
           { path: '', component: AdminDashboardComponent }
         ]
       }

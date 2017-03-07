@@ -11,6 +11,10 @@ import { AdminAddVmComponent } from './admin-add-vm/admin-add-vm.component';
 import { AdminListUserComponent } from './admin-list-user/admin-list-user.component';
 import { NavbarAdminComponent } from './navbar-admin/navbar-admin.component';
 import { AdminAddTurnkeyComponent } from './admin-add-turnkey/admin-add-turnkey.component';
+import { AdminAddAddTurnkeyComponent } from './admin-add-turnkey/admin-add-add-turnkey/admin-add-add-turnkey.component';
+import { AdminAddAddVmComponent } from './admin-add-vm/admin-add-add-vm/admin-add-add-vm.component';
+import { AdminAddAppComponent } from './admin-add-app/admin-add-app.component';
+import { AdminAddAddAppComponent } from './admin-add-app/admin-add-add-app/admin-add-add-app.component';
 
 @NgModule({
   imports: [
@@ -25,7 +29,11 @@ import { AdminAddTurnkeyComponent } from './admin-add-turnkey/admin-add-turnkey.
     AdminAddVmComponent,
     AdminListUserComponent,
     NavbarAdminComponent,
-    AdminAddTurnkeyComponent
+    AdminAddTurnkeyComponent,
+    AdminAddAddTurnkeyComponent,
+    AdminAddAddVmComponent,
+    AdminAddAppComponent,
+    AdminAddAddAppComponent
   ]
 })
 export class AdminModule { }
