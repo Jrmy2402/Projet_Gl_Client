@@ -78,6 +78,12 @@ postTurnkey (distribution: string, info: string, application: Array<string>): Ob
             .catch(this.handleError);
   }
 
+  getDashboard (): Observable< any > {
+    return this.authHttp.get(`api/admins/`)
+            .map(this.extractData)
+            .catch(this.handleError);
+  }
+
   getAdminUser (): Observable< any > {
     return this.authHttp.get(`api/users/`)
             .map(this.extractData)
