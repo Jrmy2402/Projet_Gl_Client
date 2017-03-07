@@ -10,6 +10,7 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { AdminAddVmComponent } from './admin-add-vm/admin-add-vm.component';
 import { AdminListUserComponent } from './admin-list-user/admin-list-user.component';
 import { NavbarAdminComponent } from './navbar-admin/navbar-admin.component';
+import { AdminAddTurnkeyComponent } from './admin-add-turnkey/admin-add-turnkey.component';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { NavbarAdminComponent } from './navbar-admin/navbar-admin.component';
     AdminDashboardComponent,
     AdminAddVmComponent,
     AdminListUserComponent,
-    NavbarAdminComponent
+    NavbarAdminComponent,
+    AdminAddTurnkeyComponent
   ]
 })
 export class AdminModule { }

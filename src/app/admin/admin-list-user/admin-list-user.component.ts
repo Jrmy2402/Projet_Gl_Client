@@ -11,11 +11,14 @@ import {
 })
 export class AdminListUserComponent implements OnInit {
 
+  listUser: any;
+
   constructor(private vmService: VmService) {}
 
   ngOnInit() {
     this.vmService.getAdminUser().subscribe(data => {
       console.log(data);
+      this.listUser=data;
     }, error => {
       console.log('Réponse', error);
     });
