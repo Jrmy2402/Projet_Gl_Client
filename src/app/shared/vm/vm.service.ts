@@ -30,6 +30,12 @@ export class VmService {
     // }
   }
 
+postTurnkey (distribution: string, info: string, application: Array<string>): Observable< any > {
+    return this.authHttp.post('api/turnkeys',{distribution, info, application})
+            .map(this.extractData)
+            .catch(this.handleError);
+  }
+
   getApplication (): Observable< any > {
     return this.authHttp.get('api/applis')
             .map(this.extractData)
