@@ -11,16 +11,14 @@ import {
 })
 export class AdminDashboardComponent implements OnInit {
 
-  DashBoardView: Array < any > = [];
+  DashBoardView: any = {};
 
   constructor(private vmService: VmService) {}
 
   ngOnInit() {
     this.vmService.getDashboard().subscribe(data => {
       console.log(data);
-      for (const d of data) {
-        this.DashBoardView.push(d);
-      }
+      this.DashBoardView = data[0];
       //this.listTurnkey=data;
     }, error => {
       console.log('Réponse', error);

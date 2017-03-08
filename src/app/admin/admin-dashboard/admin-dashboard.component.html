@@ -1,26 +1,37 @@
-<div  fxLayout="column" fxLayoutAlign="center center" class="background-color-fond" style="height: 100%">
+<div  fxLayout="column" fxLayoutAlign="start center" class="background-color-fond" style="height: 100%">
     <div class="flex-item margin-between width100" fxLayout="row" fxLayoutAlign="center center">
-        <h1 class="title-card">Dashboard</h1>
+        <h1 class="title-dashboard">Dashboard</h1>
     </div>
-    <div fxFlex="80" class="flex-item" fxLayout="row" fxLayoutAlign="center center">
+    <div  fxLayout="row" fxLayoutAlign="space-around stretch" style="width: 90%">
         <md-card class="example-card">
-            <md-card-header>
-                <md-card-title>VM created</md-card-title>
-                <md-card-subtitle>bite</md-card-subtitle>        
-            </md-card-header>
-            <md-card-content>
-                <div class="flex-container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center" style="width:100%">
-                    <div class="flex-item info_vm" fxFlex="30" fxLayout="row" fxLayoutAlign="center center">
-                        <div class="flex-item" fxLayout="column">@IP : </div>
-                    </div>
-                    <div class="flex-item info_vm" fxFlex="30" fxLayout="row" fxLayoutAlign="center center">
-                        <div class="flex-item" fxLayout="column">Port SSH : </div>
-                    </div>
-                    <div class="flex-item info_vm" fxFlex="30" fxLayout="row" fxLayoutAlign="center center">
-                        <div class="flex-item" fxLayout="column">Status : </div>
-                    </div>
-                </div>
-            </md-card-content>
+            <div fxLayout="row" fxLayoutAlign=" center" style="height: 100%">
+                <md-icon fxFlex="35" color="primary" style="font-size: 140px; padding-right: 20px">supervisor_account</md-icon>
+                <div fxFlex="20" class="title-card-dashboard">{{DashBoardView.nbuser}}</div>
+                <div fxFlex="45" class="text-card" style="text-align: left!important">Subscribers</div>
+            </div>
+        </md-card>
+        <md-card class="example-card">
+            <div fxLayout="row" fxLayoutAlign=" center" style="height: 100%">
+                <md-icon fxFlex="35" color="primary" style="font-size: 133px; padding-right: 20px">computer</md-icon>
+                <div fxFlex="20" class="title-card-dashboard">{{DashBoardView.nbvm}}</div>
+                <div fxFlex="45" class="text-card" style="text-align: left!important">VM created</div>
+            </div>
+        </md-card>
+    </div>
+    <div class="flex-item" fxLayout="row" fxLayoutAlign="space-around stretch" style="width: 90%; margin-top: 50px!important">
+        <md-card class="example-card">
+            <div fxLayout="row" fxLayoutAlign=" center" style="height: 100%">
+                <md-icon fxFlex="30" color="primary" style="font-size: 122px; padding-right: 20px">account_balance</md-icon>
+                <div fxFlex="30" class="title-card-dashboard">{{DashBoardView.prix}}€</div>
+                <div fxFlex="40" class="text-card" style="text-align: left!important">Collected</div>
+            </div>
+        </md-card>
+        <md-card class="example-card">
+            <div fxLayout="row" fxLayoutAlign=" center" style="height: 100%">
+                <!--<md-icon fxFlex="35" color="primary" style="font-size: 133px; padding-right: 20px">computer</md-icon>-->
+                <div fxFlex="20" class="title-card-dashboard">?</div>
+                <div fxFlex="45" class="text-card" style="text-align: left!important">?</div>
+            </div>
         </md-card>
     </div>
 </div>

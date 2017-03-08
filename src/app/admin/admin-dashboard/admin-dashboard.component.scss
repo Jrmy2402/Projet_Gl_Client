@@ -2,8 +2,21 @@
     height: 100%
 }
 
-.title-card {
+.title-dashboard {
   font-weight: 300;
   font-size: 38px;
   text-align: center;
+}
+
+.example-card {
+  width: 40%;
+  height: 150px;
+  margin-top: 10px;
+  border-radius: 10px!important;
+}
+
+.title-card-dashboard {
+  font-weight: 300;
+  font-size: 60px;
+  color: grey;
 }
