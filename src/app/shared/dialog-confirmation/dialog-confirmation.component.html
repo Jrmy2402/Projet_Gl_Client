@@ -1,0 +1,15 @@
+<md-toolbar color="primary">
+  <span>Confirmation</span>
+  <!-- This fills the remaining space of the current row -->
+  <span class="example-fill-remaining-space"></span>
+  <md-icon md-dialog-close (click)="closeDialog()" class="icon">clear</md-icon>
+  <!--<span>Right Aligned Text</span>-->
+</md-toolbar>
+<md-dialog-content fxLayout="column" fxLayoutAlign="center center" style="width: 300px; height: 150px;">
+    <!--<h1 md-dialog-title>Dialog</h1>-->
+    <div md-dialog-content>Are you sure ?</div>
+    <div md-dialog-actions>
+      <button md-button (click)="dialogRef.close('NO')">NO</button>
+      <button md-button (click)="dialogRef.close('YES')">YES</button>
+    </div>
+</md-dialog-content>

@@ -18,7 +18,7 @@ import { PageNotFoundComponent } from './page-not-found.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { DialogConnexionComponent } from './shared/dialog-connexion/dialog-connexion.component';
 import { DialogInscriptionComponent } from './shared/dialog-inscription/dialog-inscription.component';
-// import { DialogPaymentComponent } from './shared/dialog-payment/dialog-payment.component';
+import { DialogConfirmationComponent } from './shared/dialog-confirmation/dialog-confirmation.component';
 
 import { AuthService } from './shared/auth/auth.service';
 import { AuthModule } from './shared/auth/auth.module';
@@ -31,8 +31,8 @@ import { AppRoutingModule } from './app-routing.module';
     PageNotFoundComponent,
     NavbarComponent,
     DialogInscriptionComponent,
-    DialogConnexionComponent
-    // DialogPaymentComponent
+    DialogConnexionComponent,
+    DialogConfirmationComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +51,7 @@ import { AppRoutingModule } from './app-routing.module';
   entryComponents: [
      DialogInscriptionComponent,
      DialogConnexionComponent,
-    //  DialogPaymentComponent
+     DialogConfirmationComponent
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
