@@ -10,7 +10,7 @@
         <md-icon md-list-avatar>important_devices</md-icon>
         <h4 md-line>{{turnkey.name}}</h4>
         <p md-line> {{turnkey.info}} </p> 
-        <button md-mini-fab color="primary" (click)="openDialog()"><md-icon>delete</md-icon></button>
+        <button md-mini-fab color="primary" (click)="openDialog(turnkey._id)"><md-icon>delete</md-icon></button>
       </md-list-item>
     </md-list>
 </div>

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MdDialog, MdDialogRef } from '@angular/material';
 import { DialogConfirmationComponent } from '../../shared/dialog-confirmation/dialog-confirmation.component';
-
 import {
   VmService
 } from '../../shared/vm/vm.service';
@@ -29,13 +28,20 @@ selectedOption: string;
       console.log('Réponse', error);
     });
   }
-  openDialog() {
-     let dialogRef = this.dialogConfirmation.open(DialogConfirmationComponent);
+  openDialog(id : any) {
+    let dialogRef = this.dialogConfirmation.open(DialogConfirmationComponent);
     dialogRef.afterClosed().subscribe(result => {
       this.selectedOption = result;
-      
+      if (this.selectedOption==='YES') {
+        this.destroyTurnkey(id);
+      }
       console.log(this.selectedOption);
     });
+  }
+  destroyTurnkey(Id: string) {
+    this.vmService.destroyTurnkey(Id).subscribe(data => {
+      console.log(data);
+    }, err => console.log(err));
   }
 }
 
