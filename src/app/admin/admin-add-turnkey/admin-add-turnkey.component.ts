@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit
+} from '@angular/core';
 
 import {
   VmService
@@ -11,7 +14,7 @@ import {
 })
 export class AdminAddTurnkeyComponent implements OnInit {
 
-listTurnkey: Array < any > = [];
+  listTurnkey: Array < any > = [];
 
   constructor(private vmService: VmService) {}
 
@@ -27,5 +30,9 @@ listTurnkey: Array < any > = [];
     });
   }
 
-
+  destroyTurnkey(Id: string) {
+    this.vmService.destroyTurnkey(Id).subscribe(data => {
+      console.log(data);
+    }, err => console.log(err));
+  }
 }
