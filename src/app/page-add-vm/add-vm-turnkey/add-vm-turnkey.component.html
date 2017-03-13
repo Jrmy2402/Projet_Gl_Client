@@ -1,3 +1,16 @@
-<p>
-  add-vm-turnkey works!
-</p>
+<div fxFlex="70" class="example-form" style="margin-top: 20px">
+  <md-list class="listShadow">
+    <div class="headerMe">
+      <span class="title-liste">Choose your distribution :</span>
+    </div>
+    <md-list-item *ngFor="let folder of listTurnkey" class="border-list cursorPointer" (click)="checkboxFolders(folder._id, $event)">
+      <md-icon md-list-avatar>important_devices</md-icon>
+      <h4 md-line>{{folder.info}}</h4>
+      <!--<p md-line> {{folder.info}} </p>-->
+      <md-checkbox class="example-margin" [(ngModel)]="folder.checked" (click)="stopPropagationFolders(folder._id, $event, folder.checked)"></md-checkbox>
+    </md-list-item>
+  </md-list>
+  <div class="marginTop marginBottom" fxLayout="row" fxLayoutAlign="end none">
+    <button md-raised-button color="primary" (click)="addVM($event)">Ajouter la Vm</button>
+  </div>
+</div>

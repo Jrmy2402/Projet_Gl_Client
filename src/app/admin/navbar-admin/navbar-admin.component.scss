@@ -1,0 +1,26 @@
+.ul_sidenav {
+    list-style-type: none;
+    margin-top: 40px;
+    padding: 0;
+}
+
+.a_sidenav {
+    box-sizing: border-box;
+    display: block;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 47px;
+    text-decoration: none;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+    padding: 15px 0px 15px 20px;
+    position: relative;
+    color: black;
+    font-weight: 200;
+    font-size: 26px;
+}
+
+.a_sidenav:hover {
+    color:white;
+    background: #498bbb;
+}

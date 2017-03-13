@@ -1,8 +1,6 @@
-<div>
-  <h3>ADMIN</h3>
-  <nav>
-    <a routerLink="./" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Dashboard</a>
-    <a routerLink="./addVm" routerLinkActive="active">Manage Crises</a>
-  </nav>
-  <router-outlet></router-outlet>
+<div class="flex-container container-child" fxLayout="row" fxLayoutAlign="start none">
+  <app-navbar-admin></app-navbar-admin>
+  <div class="flex-item" fxLayout="column" fxFlex>
+    <router-outlet ></router-outlet>
+  </div>
 </div>

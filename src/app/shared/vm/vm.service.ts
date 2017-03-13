@@ -1,23 +1,41 @@
-import { Injectable } from '@angular/core';
-import { Http, Response, Headers, RequestOptions, URLSearchParams } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
-import { Router } from '@angular/router';
-import { AuthHttp } from 'angular2-jwt';
+import {
+  Injectable
+} from '@angular/core';
+import {
+  Http,
+  Response,
+  Headers,
+  RequestOptions,
+  URLSearchParams
+} from '@angular/http';
+import {
+  Observable
+} from 'rxjs/Observable';
+import {
+  Router
+} from '@angular/router';
+import {
+  AuthHttp
+} from 'angular2-jwt';
 import * as io from 'socket.io-client';
 import 'rxjs/add/observable/throw';
 
 @Injectable()
 export class VmService {
 
-  private vmUrl = 'api/users/addvm';  // URL to web API
+  private vmUrl = 'api/users/addvm'; // URL to web API
   private socket;
 
-  constructor (private http: Http, private router: Router, public authHttp: AuthHttp) {}
+  constructor(private http: Http, private router: Router, public authHttp: AuthHttp) {}
 
-  addVM (distribution: string, application: Array<string>, tokenCard: any): Observable< any > {
-    return this.authHttp.post('api/users/addvm', {distribution, application, tokenCard})
-            .map(this.extractData)
-            .catch(this.handleError);
+  addVM(distribution: string, application: Array < string > , tokenCard: any): Observable < any > {
+    return this.authHttp.post('api/users/addvm', {
+        distribution,
+        application,
+        tokenCard
+      })
+      .map(this.extractData)
+      .catch(this.handleError);
     // const token = localStorage.getItem('token');
     // if (token) {
     //   const options = {
@@ -30,56 +48,95 @@ export class VmService {
     // }
   }
 
-  getApplication (): Observable< any > {
+  //Turnkey---------------------------------------------------------------------------------------------
+  postTurnkey(distribution: string, info: string, application: Array < string > ): Observable < any > {
+    return this.authHttp.post('api/turnkeys', {
+        distribution,
+        info,
+        application
+      })
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  getTurnkey(): Observable < any > {
+    return this.authHttp.get(`api/turnkeys/`)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  destroyTurnkey(id: string): Observable < any > {
+    return this.authHttp.delete(`api/turnkeys/${id}`)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  //Catalog---------------------------------------------------------------------------------------------
+  postCatalog(name: string, info: string, FromCmd: String): Observable < any > {
+    return this.authHttp.post('api/catalogs', {
+        name,
+        info,
+        FromCmd
+      })
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  getApplication(): Observable < any > {
     return this.authHttp.get('api/applis')
-            .map(this.extractData)
-            .catch(this.handleError);
+      .map(this.extractData)
+      .catch(this.handleError);
   }
 
-  getCatalog (): Observable< any > {
+  getCatalog(): Observable < any > {
     return this.authHttp.get('api/catalogs')
-            .map(this.extractData)
-            .catch(this.handleError);
+      .map(this.extractData)
+      .catch(this.handleError);
   }
 
-  getMyVm (): Observable< any > {
+  getMyVm(): Observable < any > {
     return this.authHttp.get('api/users/meVm')
-            .map(this.extractData)
-            .catch(this.handleError);
+      .map(this.extractData)
+      .catch(this.handleError);
   }
 
-  getInfoVm (id: string): Observable< any > {
+  getInfoVm(id: string): Observable < any > {
     return this.authHttp.get(`api/users/meVm/${id}`)
-            .map(this.extractData)
-            .catch(this.handleError);
+      .map(this.extractData)
+      .catch(this.handleError);
   }
 
-  startVm (id: string): Observable< any > {
+  startVm(id: string): Observable < any > {
     return this.authHttp.get(`api/users/meVmStart/${id}`)
-            .map(this.extractData)
-            .catch(this.handleError);
+      .map(this.extractData)
+      .catch(this.handleError);
   }
 
-  stopVm (id: string): Observable< any > {
+  stopVm(id: string): Observable < any > {
     return this.authHttp.get(`api/users/meVmStop/${id}`)
-            .map(this.extractData)
-            .catch(this.handleError);
+      .map(this.extractData)
+      .catch(this.handleError);
   }
 
-  removeVm (id: string): Observable< any > {
+  removeVm(id: string): Observable < any > {
     return this.authHttp.delete(`api/users/meVmRemove/${id}`)
-            .map(this.extractData)
-            .catch(this.handleError);
+      .map(this.extractData)
+      .catch(this.handleError);
   }
 
-  getAdminUser (): Observable< any > {
+  getDashboard(): Observable < any > {
+    return this.authHttp.get(`api/admins/`)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  getAdminUser(): Observable < any > {
     return this.authHttp.get(`api/users/`)
-            .map(this.extractData)
-            .catch(this.handleError);
+      .map(this.extractData)
+      .catch(this.handleError);
   }
-  
 
-  getInfoVmSocket(Id: string): Observable< any > {
+  getInfoVmSocket(Id: string): Observable < any > {
     const observable = new Observable(observer => {
       const token = localStorage.getItem('token');
       if (token) {
@@ -100,7 +157,7 @@ export class VmService {
     return observable;
   }
 
-  getVmSocket(): Observable< any > {
+  getVmSocket(): Observable < any > {
     const observable = new Observable(observer => {
       const token = localStorage.getItem('token');
       if (token) {
@@ -126,7 +183,7 @@ export class VmService {
     return body.data || body;
   }
 
-  private handleError (error: Response | any) {
+  private handleError(error: Response | any) {
     // localStorage.removeItem('token');
     // In a real world app, we might use a remote logging infrastructure
     let errMsg: string;
@@ -144,4 +201,3 @@ export class VmService {
     return Observable.throw(errMsg);
   }
 }
-

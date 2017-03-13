@@ -46,7 +46,7 @@ export class AuthService {
 
   isAdmin () {
       const role = this.userRole();
-      return role === 'Admin' ? true : false;
+      return role === 'admin' ? true : false;
   }
 
   disconnect () {
