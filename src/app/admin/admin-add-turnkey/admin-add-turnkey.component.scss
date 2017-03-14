@@ -29,3 +29,10 @@
 .cursorPointer{
     cursor:pointer;
 }
+
+.example-fab {
+  position: fixed;
+  right: 80px;
+  bottom: 20px;
+  z-index: 2;
+}

@@ -6,8 +6,8 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { AdminAddVmComponent } from './admin-add-vm/admin-add-vm.component';
 import { AdminListUserComponent } from './admin-list-user/admin-list-user.component';
 import { AdminAddAppComponent } from './admin-add-app/admin-add-app.component';
-import { AdminAddTurnkeyComponent } from './admin-add-turnkey/admin-add-turnkey.component'
-
+import { AdminAddTurnkeyComponent } from './admin-add-turnkey/admin-add-turnkey.component';
+import { AdminAddAddTurnkeyComponent } from './admin-add-turnkey/admin-add-add-turnkey/admin-add-add-turnkey.component';
 
 import { AuthGuard } from '../shared/auth/auth-guard.service';
 
@@ -22,9 +22,10 @@ const adminRoutes: Routes = [
         path: '',
         canActivateChild: [AuthGuard],
         children: [
+          { path: 'manageTurnkey',  component: AdminAddTurnkeyComponent},
+          { path: 'addTurnkey',  component: AdminAddAddTurnkeyComponent},
           { path: 'manageOS', component: AdminAddVmComponent },
           { path: 'listUser', component: AdminListUserComponent },
-          { path: 'manageTurnkey', component: AdminAddTurnkeyComponent },
           { path: 'manageApp', component: AdminAddAppComponent },
           { path: '', component: AdminDashboardComponent }
         ]
