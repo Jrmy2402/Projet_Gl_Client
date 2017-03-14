@@ -1,0 +1,48 @@
+md-dialog-actions{
+  margin-left: 6px;
+  margin-right: 6px;
+}
+.margin-input-container{
+    margin: 6px 0;
+}
+.example-fill-remaining-space {
+  flex: 1 1 auto;
+}
+md-divider{
+  margin-top: 20px;
+  margin-bottom: 12px;
+}
+.icon {
+  cursor:pointer;
+}
+.margin-button-inscription{
+  margin-top : 10px;
+}
+.margin-text-error{
+  padding-top : 5px;
+  padding-bottom : 5px;
+}
+.margin-left{
+  margin-left: 5%;
+  @media screen and (max-width: 600px) {
+    margin-left: 0%;
+  }
+}
+.widthphone{
+  @media screen and (max-width: 600px) {
+    width: 100%!important;
+  }
+}
+// .error{
+//   color: red!important;
+//   border-color: rgb(213,0,0);
+//   md-input-placeholder{
+//     color: red;
+//     border-color: rgb(213,0,0);
+//   }
+//   .md-input-placeholder{
+//     color: red!important;
+//   }
+// }
+
+
