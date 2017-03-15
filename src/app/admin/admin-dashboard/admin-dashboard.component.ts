@@ -29,10 +29,10 @@ export class AdminDashboardComponent implements OnInit, OnDestroy  {
       console.log('Réponse', error);
     });
     this.connection = this.vmService.getInfoOs().subscribe(data => {
-      // console.log(data);
+      console.log(data);
       if (data.dataOSCPU) {
         this.cpuOs = data.dataOSCPU;
-      } else {
+      } else if (data.dataOSMemory) {
         this.free = data.dataOSMemory.free;
         this.total = data.dataOSMemory.total;
       }
