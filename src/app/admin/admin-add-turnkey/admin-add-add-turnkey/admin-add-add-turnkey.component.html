@@ -3,7 +3,7 @@
     <h1 class="title-addTurnkey">Add a Turnkey Configuration</h1>
   </div>  
   <md-input-container>
-    <input mdInput placeholder="Turnkey Configuration Name" value="" class="input-name">
+    <input mdInput placeholder="Turnkey Configuration Name" class="input-name" [(ngModel)]="info">
   </md-input-container>
   <div fxFlex="70" class="example-form" style="margin-top: 20px">
     <md-list class="listShadow">
@@ -29,7 +29,7 @@
       </md-list-item>
     </md-list>
     <div class="marginTop marginBottom" fxLayout="row" fxLayoutAlign="end none">
-      <button md-raised-button color="primary" (click)="addVM($event)">Ajouter la Vm</button>
+      <button md-raised-button color="primary" (click)="saveTurnkey()">Add Turnkey Configuration</button>
     </div>
   </div>
 </div>

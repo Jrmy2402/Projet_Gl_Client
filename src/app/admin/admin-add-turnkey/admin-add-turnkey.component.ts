@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MdDialog, MdDialogRef } from '@angular/material';
 import { DialogConfirmationComponent } from '../../shared/dialog-confirmation/dialog-confirmation.component';
-import {
-  VmService
-} from '../../shared/vm/vm.service';
+import { VmService } from '../../shared/vm/vm.service';
 
 @Component({
   selector: 'app-admin-add-turnkey',
