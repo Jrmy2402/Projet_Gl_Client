@@ -201,6 +201,26 @@ export class VmService {
     return observable;
   }
 
+  getAdminSocket(): Observable < any > {
+    const observable = new Observable(observer => {
+      const token = localStorage.getItem('token');
+      if (token) {
+        this.socket = io({
+          'query': 'token=' + token,
+          'path': '/sock'
+        });
+      }
+      this.socket.on('admin:update', (data) => {
+        observer.next(data);
+      });
+      return () => {
+        console.log('disconnect');
+        this.socket.disconnect();
+      };
+    });
+    return observable;
+  }
+
   private extractData(res: Response) {
     const body = res.json();
     // localStorage.setItem('token', body.token);
