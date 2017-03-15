@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit
+} from '@angular/core';
 import {
   MdDialog,
   MdDialogRef,
@@ -7,7 +10,9 @@ import {
 import {
   VmService
 } from '../../../shared/vm/vm.service';
-import { Router } from '@angular/router';
+import {
+  Router
+} from '@angular/router';
 
 @Component({
   selector: 'app-admin-add-add-app',
@@ -18,15 +23,15 @@ export class AdminAddAddAppComponent implements OnInit {
 
   constructor(private vmService: VmService, public snackBar: MdSnackBar, private router: Router) {}
 
-  name: String;
-  info: String;
-  RunCmd: String;
+  name: string;
+  info: string;
+  RunCmd: string;
 
   ngOnInit() {
 
   }
- 
- postApplication() {
+
+  postApplication() {
     this.vmService.postApplication(this.name, this.info, this.RunCmd).subscribe(data => {
       console.log(data);
     }, err => console.log(err));

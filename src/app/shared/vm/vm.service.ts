@@ -82,6 +82,18 @@ export class VmService {
       .catch(this.handleError);
   }
 
+  getCatalog(): Observable < any > {
+    return this.authHttp.get('api/catalogs')
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  destroyCatalog(id: string): Observable < any > {
+    return this.authHttp.delete(`api/catalogs/${id}`)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
   // Application ------------------------------------------------------------------------------------------
   getApplication(): Observable < any > {
     return this.authHttp.get('api/applis')
@@ -89,7 +101,7 @@ export class VmService {
       .catch(this.handleError);
   }
 
-  postApplication(name: String, info: String, RunCmd: String): Observable < any > {
+  postApplication(name: string, info: string, RunCmd: string): Observable < any > {
     return this.authHttp.post('api/applis', {
         name,
         info,
@@ -98,15 +110,9 @@ export class VmService {
       .map(this.extractData)
       .catch(this.handleError);
   }
-  
+
   destroyApplication(id: string): Observable < any > {
     return this.authHttp.delete(`api/applis/${id}`)
-      .map(this.extractData)
-      .catch(this.handleError);
-  }
-
-  getCatalog(): Observable < any > {
-    return this.authHttp.get('api/catalogs')
       .map(this.extractData)
       .catch(this.handleError);
   }
