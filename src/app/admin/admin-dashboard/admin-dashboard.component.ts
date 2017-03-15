@@ -13,6 +13,7 @@ export class AdminDashboardComponent implements OnInit, OnDestroy  {
 
   DashBoardView: any = {};
   public connection;
+  public connection2;
   cpuOs: any;
   free: any;
   total: any;
@@ -28,7 +29,7 @@ export class AdminDashboardComponent implements OnInit, OnDestroy  {
       console.log('Réponse', error);
     });
     this.connection = this.vmService.getInfoOs().subscribe(data => {
-      console.log(data);
+      // console.log(data);
       if (data.dataOSCPU) {
         this.cpuOs = data.dataOSCPU;
       } else {
@@ -36,9 +37,14 @@ export class AdminDashboardComponent implements OnInit, OnDestroy  {
         this.total = data.dataOSMemory.total;
       }
     });
+    this.connection2 = this.vmService.getAdminSocket().subscribe(data => {
+      this.DashBoardView = data;
+      console.log('connection2', data);
+    });
   }
 
   ngOnDestroy () {
     this.connection.unsubscribe();
+    this.connection2.unsubscribe();
   }
 }
