@@ -22,6 +22,7 @@ import { DialogConfirmationComponent } from './shared/dialog-confirmation/dialog
 
 import { AuthService } from './shared/auth/auth.service';
 import { AuthModule } from './shared/auth/auth.module';
+import { NavbarAdminService } from './admin/navbar-admin/navbar-admin.service';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -53,7 +54,7 @@ import { AppRoutingModule } from './app-routing.module';
      DialogConnexionComponent,
      DialogConfirmationComponent
   ],
-  providers: [AuthService],
+  providers: [AuthService, NavbarAdminService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

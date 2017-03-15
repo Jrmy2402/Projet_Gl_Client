@@ -11,4 +11,7 @@
     <button md-button *ngIf="authService.isAdmin()" class="button-navbar" routerLink="/admin">Admin</button>
     <button md-button class="button-navbar" (click)="authService.disconnect()">Déconnexion</button>   
   </div>
+  <button *ngIf="authService.isInAdmin()" md-mini-fab class="example-fab" (click)="toggle()">
+    <md-icon>view_headline</md-icon>
+  </button>
 </md-toolbar>

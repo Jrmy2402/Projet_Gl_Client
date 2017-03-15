@@ -1,6 +1,6 @@
-<div class="flex-container container-child" fxLayout="row" fxLayoutAlign="start none">
-  <app-navbar-admin></app-navbar-admin>
-  <div class="flex-item" fxLayout="column" fxFlex>
-    <router-outlet ></router-outlet>
-  </div>
-</div>
+<md-sidenav-container class="container-child">
+  <md-sidenav #sidenav [mode]="menuMode" opened="true">
+    <app-navbar-admin></app-navbar-admin>
+  </md-sidenav>
+  <router-outlet ></router-outlet>
+</md-sidenav-container>
