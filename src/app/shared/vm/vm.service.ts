@@ -82,8 +82,25 @@ export class VmService {
       .catch(this.handleError);
   }
 
+  // Application ------------------------------------------------------------------------------------------
   getApplication(): Observable < any > {
     return this.authHttp.get('api/applis')
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  postApplication(name: String, info: String, RunCmd: String): Observable < any > {
+    return this.authHttp.post('api/applis', {
+        name,
+        info,
+        RunCmd
+      })
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+  
+  destroyApplication(id: string): Observable < any > {
+    return this.authHttp.delete(`api/applis/${id}`)
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -168,10 +185,14 @@ export class VmService {
         this.socket.emit('statsOs', 'ok');
       }
       this.socket.on('statsOSCPU', (data) => {
-        observer.next({dataOSCPU : data});
+        observer.next({
+          dataOSCPU: data
+        });
       });
       this.socket.on('statsOSMemory', (data) => {
-        observer.next({dataOSMemory : data});
+        observer.next({
+          dataOSMemory: data
+        });
       });
       return () => {
         console.log('disconnect');
