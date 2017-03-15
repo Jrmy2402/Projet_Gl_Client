@@ -1,6 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { MdDialog, MdDialogRef } from '@angular/material';
-import { DialogConfirmationComponent } from '../../shared/dialog-confirmation/dialog-confirmation.component';
+import {
+  Component,
+  OnInit
+} from '@angular/core';
+import {
+  MdDialog,
+  MdDialogRef
+} from '@angular/material';
+import {
+  DialogConfirmationComponent
+} from '../../shared/dialog-confirmation/dialog-confirmation.component';
 import {
   VmService
 } from '../../shared/vm/vm.service';
@@ -12,8 +20,8 @@ import {
 })
 export class AdminAddTurnkeyComponent implements OnInit {
 
-listTurnkey: Array < any > = [];
-selectedOption: string;
+  listTurnkey: Array < any > = [];
+  selectedOption: string;
 
   constructor(private vmService: VmService, public dialogConfirmation: MdDialog) {}
 
@@ -28,11 +36,11 @@ selectedOption: string;
       console.log('Réponse', error);
     });
   }
-  openDialog(id : any) {
+  openDialog(id: any) {
     let dialogRef = this.dialogConfirmation.open(DialogConfirmationComponent);
     dialogRef.afterClosed().subscribe(result => {
       this.selectedOption = result;
-      if (this.selectedOption==='YES') {
+      if (this.selectedOption === 'YES') {
         this.destroyTurnkey(id);
       }
       console.log(this.selectedOption);
@@ -44,4 +52,3 @@ selectedOption: string;
     }, err => console.log(err));
   }
 }
-
