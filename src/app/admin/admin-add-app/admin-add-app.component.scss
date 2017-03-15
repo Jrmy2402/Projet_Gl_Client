@@ -2,7 +2,7 @@
     height: 100%
 }
 
-.title-manageTurnkey {
+.title-manageApp {
   font-weight: 300;
   font-size: 38px;
   text-align: center;
@@ -35,4 +35,10 @@
   right: 80px;
   bottom: 20px;
   z-index: 2;
+}
+
+.border-list{
+    border-left: 1px solid #dce0e0;
+    border-right: 1px solid #dce0e0;
+    border-bottom: 1px solid #dce0e0;
 }

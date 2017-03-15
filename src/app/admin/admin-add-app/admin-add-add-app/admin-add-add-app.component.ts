@@ -28,12 +28,26 @@ export class AdminAddAddAppComponent implements OnInit {
   RunCmd: string;
 
   ngOnInit() {
-
+    
   }
 
-  postApplication() {
-    this.vmService.postApplication(this.name, this.info, this.RunCmd).subscribe(data => {
-      console.log(data);
-    }, err => console.log(err));
+ postApplication() {
+    if(this.name && this.info && this.RunCmd){
+      this.vmService.postApplication(this.name, this.info, this.RunCmd).subscribe(data => {
+        console.log(data);
+        this.snackBar.open('Application successfully added', 'ok', {
+          duration: 9000,
+        });
+      }, err => {
+          console.log('Réponse', err);
+          this.snackBar.open('Error : Application not created', 'ok', {
+            duration: 9000,
+          });
+      });
+    } else {
+      this.snackBar.open('Error : You must choose a name, an information and a command line !', 'ok', {
+      duration: 9000,
+      });
+    }
   }
 }
