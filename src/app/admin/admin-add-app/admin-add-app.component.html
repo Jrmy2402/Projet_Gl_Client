@@ -1,3 +1,19 @@
-<p>
-  admin-add-app works!
-</p>
+<div  fxLayout="column" fxLayoutAlign="start center" class="background-color-fond" style="height: 100%">
+    <button routerLink="/admin/addApplication" color="primary" md-mini-fab class="example-fab" >
+      <md-icon>add</md-icon>
+    </button>
+    <div class="flex-item margin-between width100" fxLayout="row" fxLayoutAlign="center center">
+        <h1 class="title-manageApplication">Manage the Application Configuration catalog</h1>
+    </div>
+    <md-list class="listShadow">
+      <div class="headerMe">
+        <span class="title-liste">Application Configuration catalog :</span>
+      </div>
+      <md-list-item *ngFor="let application of listApplication" class="border-list cursorPointer" >
+        <md-icon md-list-avatar>important_devices</md-icon>
+        <h4 md-line>{{application.name}}</h4>
+        <p md-line> {{application.info}} </p>
+        <button md-mini-fab color="primary" (click)="openDialog(application._id)"><md-icon>delete</md-icon></button>
+      </md-list-item>
+    </md-list>
+</div>

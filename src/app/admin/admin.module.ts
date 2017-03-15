@@ -4,6 +4,7 @@ import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AdminRoutingModule } from './admin-routing.module';
+import { FormsModule } from '@angular/forms';
 
 import { AdminComponent } from './admin.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
@@ -22,7 +23,8 @@ import { NavbarAdminService } from './navbar-admin/navbar-admin.service';
     CommonModule,
     AdminRoutingModule,
     MaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    FormsModule
   ],
   declarations: [
     AdminComponent,

@@ -19,16 +19,16 @@ import {
 })
 export class AdminAddAppComponent implements OnInit {
 
-  listTurnkey: Array < any > = [];
+  listApplication: Array < any > = [];
   selectedOption: string;
 
   constructor(private vmService: VmService, public dialogConfirmation: MdDialog) {}
 
   ngOnInit() {
-    this.vmService.getTurnkey().subscribe(data => {
+    this.vmService.getApplication().subscribe(data => {
       console.log(data);
       for (const d of data) {
-        this.listTurnkey.push(d);
+        this.listApplication.push(d);
       }
       //this.listTurnkey=data;
     }, error => {
@@ -40,13 +40,13 @@ export class AdminAddAppComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       this.selectedOption = result;
       if (this.selectedOption === 'YES') {
-        this.destroyTurnkey(id);
+        this.destroyApplication(id);
       }
       console.log(this.selectedOption);
     });
   }
-  destroyTurnkey(Id: string) {
-    this.vmService.destroyTurnkey(Id).subscribe(data => {
+  destroyApplication(Id: string) {
+    this.vmService.destroyApplication(Id).subscribe(data => {
       console.log(data);
     }, err => console.log(err));
   }
