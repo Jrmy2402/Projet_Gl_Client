@@ -64,7 +64,7 @@ export class AddVmTurnkeyComponent implements OnInit {
       for (const elt of this.listTurnkey) {
         if (elt.checked === true) {
           this.distribution = elt.distribution;
-          this.applicationschoose.push(elt.application);
+          this.applicationschoose=elt.application;
         }
       }
 
