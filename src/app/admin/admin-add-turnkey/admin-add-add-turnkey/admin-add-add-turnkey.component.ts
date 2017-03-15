@@ -90,21 +90,28 @@ export class AdminAddAddTurnkeyComponent implements OnInit {
         this.applicationschoose.push(elt.name);
       }
     }
-    console.log(this.distribution, this.applicationschoose);
-    debugger
-    this.vmService.postTurnkey(this.distribution, this.info, this.applicationschoose)
-      .subscribe(data => {
-        console.log('Réponse', data);
-        this.snackBar.open('Turnkey Configuration successfully created', 'ok', {
-          duration: 9000,
+    if(this.distribution && this.info){
+      console.log(this.distribution, this.applicationschoose);
+      debugger
+      this.vmService.postTurnkey(this.distribution, this.info, this.applicationschoose)
+        .subscribe(data => {
+          console.log('Réponse', data);
+          this.snackBar.open('Turnkey Configuration successfully created', 'ok', {
+            duration: 9000,
+          });
+          this.router.navigate(['admin/manageTurnkey']);
+        }, error => {
+          console.log('Réponse', error);
+          this.applicationschoose = [];
+          this.snackBar.open('Error : Turnkey Configuration not created', 'ok', {
+            duration: 9000,
+          });
         });
-        this.router.navigate(['admin/manageTurnkey']);
-      }, error => {
-        console.log('Réponse', error);
-        this.applicationschoose = [];
-        this.snackBar.open('Error : Turnkey Configuration not created', 'ok', {
-          duration: 9000,
-        });
-      });
+    } else {
+       this.snackBar.open('Error : You must choose a name and a distribution to confirm', 'ok', {
+            duration: 9000,
+          });
+    }
+
   }
 }

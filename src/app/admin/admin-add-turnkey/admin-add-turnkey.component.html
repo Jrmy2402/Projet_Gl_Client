@@ -12,10 +12,10 @@
       <md-list-item *ngFor="let turnkey of listTurnkey" class="border-list cursorPointer">
         <md-icon md-list-avatar>important_devices</md-icon>
         <h1 md-line style="font-size: 20px">{{turnkey.info}}</h1>
-        <h4 md-line style="margin-top: 10px">Distribution : </h4> 
-        <p md-line style="margin-left:10px">{{turnkey.distribution}} </p> 
-        <h4 md-line style="margin-top: 10px">Applications : </h4> 
-        <p md-line *ngFor="let app of turnkey.application" style="margin-left:10px"> {{app}} </p> 
+        <h4 md-line style="margin-top: 10px; margin-left: 10px">Distribution : </h4> 
+        <p md-line style="margin-left:20px">{{turnkey.distribution}} </p> 
+        <h4 md-line style="margin-top: 10px; margin-left: 10px">Applications : </h4> 
+        <p md-line *ngFor="let app of turnkey.application" style="margin-left:20px"> {{app}} </p> 
         <button md-mini-fab color="primary" (click)="openDialog(turnkey._id)"><md-icon>delete</md-icon></button>
       </md-list-item>
     </md-list>
