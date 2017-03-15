@@ -44,8 +44,7 @@ export class InfoVmComponent implements OnInit, OnDestroy {
           if (this.myVM.info === 'On') {
             this.start = false;
             this.stop = true;
-          }
-          else {
+          } else {
             this.start = true;
             this.stop = false;
           }

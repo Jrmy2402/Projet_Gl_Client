@@ -1,4 +1,4 @@
-app-navbar-admin {
+md-sidenav {
     box-sizing: border-box;
     background-color: #e0e0e0;
     width: 400px;
@@ -11,3 +11,20 @@ app-navbar-admin {
     padding: 24px 0;
     z-index: 2;
 }
+
+.example-sidenav-fab-container .mat-sidenav-content,
+.example-sidenav-fab-container md-sidenav {
+  display: flex;
+  overflow: visible;
+}
+
+.example-scrolling-content {
+  overflow: auto;
+}
+
+.example-fab {
+  position: absolute;
+  right: 20px;
+  bottom: 10px;
+}
+

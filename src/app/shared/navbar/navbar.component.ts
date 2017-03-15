@@ -3,6 +3,7 @@ import { MdDialog, MdDialogRef } from '@angular/material';
 import { DialogConnexionComponent } from '../dialog-connexion/dialog-connexion.component';
 import { DialogInscriptionComponent } from '../dialog-inscription/dialog-inscription.component';
 import { AuthService } from '../auth/auth.service';
+import { NavbarAdminService } from '../../admin/navbar-admin/navbar-admin.service';
 
 
 @Component({
@@ -12,7 +13,10 @@ import { AuthService } from '../auth/auth.service';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(public dialogConnexion: MdDialog, public dialogInscription: MdDialog, private authService: AuthService) { }
+  constructor(public dialogConnexion: MdDialog,
+  public dialogInscription: MdDialog,
+  private authService: AuthService,
+  public navbarAdminService: NavbarAdminService) { }
 
   ngOnInit() {
   }
@@ -22,6 +26,10 @@ export class NavbarComponent implements OnInit {
   }
   openDialogConnexion() {
     this.dialogConnexion.open(DialogConnexionComponent);
+  }
+
+  toggle() {
+    this.navbarAdminService.toggle();
   }
 
 }

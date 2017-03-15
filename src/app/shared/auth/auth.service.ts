@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { User } from './user';
 import { Observable } from 'rxjs/Observable';
-import { Router } from '@angular/router';
+import { Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import 'rxjs/add/observable/throw';
 import { tokenNotExpired, JwtHelper } from 'angular2-jwt';
 
@@ -47,6 +47,11 @@ export class AuthService {
   isAdmin () {
       const role = this.userRole();
       return role === 'admin' ? true : false;
+  }
+
+  isInAdmin () {
+    const route = this.router.url;
+    return route.includes('/admin');
   }
 
   disconnect () {

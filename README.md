@@ -1,6 +1,18 @@
 # Lancement du client
 
 **ng serve**
+**ng run start-serve**
+
+
+#Lancement du serveur
+
+ssh root@172.31.1.25
+pswrd : isen29
+cd home/isen/server
+pm2 status
+git pull origin master
+git delete VMRS
+git start VMRS
 
 
 # Tuto git pour push des modifs

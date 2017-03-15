@@ -71,7 +71,7 @@ export class VmService {
       .catch(this.handleError);
   }
 
-  //Catalog---------------------------------------------------------------------------------------------
+  // Catalog---------------------------------------------------------------------------------------------
   postCatalog(name: string, info: string, FromCmd: String): Observable < any > {
     return this.authHttp.post('api/catalogs', {
         name,
@@ -148,6 +148,30 @@ export class VmService {
       }
       this.socket.on('infoVm', (data) => {
         observer.next(data);
+      });
+      return () => {
+        console.log('disconnect');
+        this.socket.disconnect();
+      };
+    });
+    return observable;
+  }
+
+  getInfoOs(): Observable < any > {
+    const observable = new Observable(observer => {
+      const token = localStorage.getItem('token');
+      if (token) {
+        this.socket = io({
+          'query': 'token=' + token,
+          'path': '/sock'
+        });
+        this.socket.emit('statsOs', 'ok');
+      }
+      this.socket.on('statsOSCPU', (data) => {
+        observer.next({dataOSCPU : data});
+      });
+      this.socket.on('statsOSMemory', (data) => {
+        observer.next({dataOSMemory : data});
       });
       return () => {
         console.log('disconnect');
