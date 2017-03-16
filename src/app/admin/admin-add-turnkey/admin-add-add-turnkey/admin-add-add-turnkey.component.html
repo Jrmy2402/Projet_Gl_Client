@@ -1,8 +1,8 @@
-<div  fxLayout="column" fxLayoutAlign="start center" class="background-color-fond">  
-  <div class="flex-item margin-between width100" fxLayout="row" fxLayoutAlign="center center">
-    <h1 class="title-addTurnkey">Add a Turnkey Configuration</h1>
-  </div>  
-  <div fxFlex="70" class="example-form" style="margin-top: 20px" *ngIf="catalogs.length > 0 && applications.length > 0">
+<div class="example-form background-color-fond divMainForm">
+  <div class="divMain background-color-fond" style="margin-top: 20px">
+    <div class="flex-item margin-between width100" fxLayout="row" fxLayoutAlign="center center">
+      <h1 class="title-addTurnkey">Add a Turnkey Configuration</h1>
+    </div>
     <md-input-container style="width: 100%">
       <input mdInput placeholder="Turnkey Configuration Name" class="input-name" [(ngModel)]="info">
     </md-input-container>
@@ -32,4 +32,5 @@
       <button md-raised-button color="primary" (click)="saveTurnkey()">Add Turnkey Configuration</button>
     </div>
   </div>
+
 </div>

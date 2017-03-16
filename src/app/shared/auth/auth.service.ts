@@ -4,7 +4,7 @@ import { User } from './user';
 import { Observable } from 'rxjs/Observable';
 import { Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import 'rxjs/add/observable/throw';
-import { tokenNotExpired, JwtHelper } from 'angular2-jwt';
+import { tokenNotExpired, JwtHelper, AuthHttp} from 'angular2-jwt';
 
 @Injectable()
 export class AuthService {
@@ -14,13 +14,13 @@ export class AuthService {
   redirectUrl: string;
   role: string;
 
-  constructor (private http: Http, private router: Router) {}
+  constructor (private http: Http, private router: Router, public authHttp: AuthHttp) {}
 
   addUser (user: User): Observable< any > {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
      return this.http.post(this.authUrl, {user})
-        .map(this.extractData)
+        .map(this.extractToken)
         .catch(this.handleError);
   }
 
@@ -28,7 +28,7 @@ export class AuthService {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
     return this.http.post('auth/local', { email, password }, options)
-                    .map(this.extractData)
+                    .map(this.extractToken)
                     .catch(this.handleError);
   }
 
@@ -54,12 +54,23 @@ export class AuthService {
     return route.includes('/admin');
   }
 
+  getMeInfo(): Observable < any > {
+    return this.authHttp.get(`api/users/me`)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
   disconnect () {
       localStorage.removeItem('token');
       this.router.navigate(['home']);
   }
 
   private extractData(res: Response) {
+    const body = res.json();
+    return body || { };
+  }
+
+  private extractToken(res: Response) {
     const body = res.json();
     localStorage.setItem('token', body.token);
     return body.data || { };

@@ -5,11 +5,12 @@ import {
 import {
   Observable
 } from 'rxjs/Observable';
+import { AuthService } from 'app/shared/auth/auth.service';
 
 @Injectable()
 export class StripeService {
 
-  constructor() {
+  constructor(public authService: AuthService) {
     // Stripe.setPublishableKey('pk_test_7aIkn0pnuk0t1P7XTKRumIuY');
   }
 
@@ -24,19 +25,23 @@ export class StripeService {
         }
       });
 
-      handler.open({
-        name: 'VMRS',
-        description: '2 widgets',
-        email: 'jeremy.spriet@gmail.com',
-        allowRememberMe: false,
-        // zipCode: true,
-        currency: 'eur',
-        amount: 2000
+      this.authService.getMeInfo().subscribe(data => {
+        handler.open({
+          name: 'VMRS',
+          description: 'By VM',
+          email: data.email,
+          allowRememberMe: false,
+          // zipCode: true,
+          currency: 'eur',
+          amount: 500
+        });
+
+        window.addEventListener('popstate', function () {
+          handler.close();
+        });
       });
 
-      window.addEventListener('popstate', function () {
-        handler.close();
-      });
+
     });
   }
 

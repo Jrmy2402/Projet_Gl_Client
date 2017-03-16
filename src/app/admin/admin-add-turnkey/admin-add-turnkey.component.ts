@@ -22,6 +22,7 @@ export class AdminAddTurnkeyComponent implements OnInit {
 
   listTurnkey: Array < any > = [];
   selectedOption: string;
+  connection: any;
 
   constructor(private vmService: VmService, public dialogConfirmation: MdDialog) {}
 
@@ -31,13 +32,14 @@ export class AdminAddTurnkeyComponent implements OnInit {
       for (const d of data) {
         this.listTurnkey.push(d);
       }
-      //this.listTurnkey=data;
     }, error => {
       console.log('Réponse', error);
     });
+
   }
+
   openDialog(id: any) {
-    let dialogRef = this.dialogConfirmation.open(DialogConfirmationComponent);
+    const dialogRef = this.dialogConfirmation.open(DialogConfirmationComponent);
     dialogRef.afterClosed().subscribe(result => {
       this.selectedOption = result;
       if (this.selectedOption === 'YES') {
@@ -49,6 +51,9 @@ export class AdminAddTurnkeyComponent implements OnInit {
   destroyTurnkey(Id: string) {
     this.vmService.destroyTurnkey(Id).subscribe(data => {
       console.log(data);
+      this.listTurnkey = this.listTurnkey.filter(d => {
+        return d._id !== Id;
+      });
     }, err => console.log(err));
   }
 }

@@ -67,7 +67,7 @@ export class VmService {
 
   destroyTurnkey(id: string): Observable < any > {
     return this.authHttp.delete(`api/turnkeys/${id}`)
-      .map(this.extractData)
+      .map(res => res.json())
       .catch(this.handleError);
   }
 
@@ -244,8 +244,7 @@ export class VmService {
 
   private extractData(res: Response) {
     const body = res.json();
-    // localStorage.setItem('token', body.token);
-    return body.data || body;
+    return body.data || body || {};
   }
 
   private handleError(error: Response | any) {
