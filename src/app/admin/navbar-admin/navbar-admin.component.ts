@@ -9,8 +9,15 @@ import { NavbarAdminService } from './navbar-admin.service';
 })
 export class NavbarAdminComponent implements OnInit {
 
-  constructor() { }
+  constructor(public navbarAdminService: NavbarAdminService) { }
 
   ngOnInit() {
+  }
+
+  closeSidenav() {
+      const w = window.innerWidth;
+      if (w <= 1000) {
+        this.navbarAdminService.close();
+      }
   }
 }
