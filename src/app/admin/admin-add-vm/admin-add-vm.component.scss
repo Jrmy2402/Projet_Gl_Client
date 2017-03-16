@@ -2,7 +2,7 @@
     height: 100%
 }
 
-.title-manageVM {
+.title-manageOS {
   font-weight: 300;
   font-size: 38px;
   text-align: center;
@@ -18,6 +18,7 @@
 .listShadow{
     padding-top: 0px;
     box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+    width: 70%;
 }
 
 .title-liste{
@@ -27,4 +28,36 @@
 
 .cursorPointer{
     cursor:pointer;
+}
+
+.example-fab {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 2;
+  @media (max-width: 600px) {
+    position: inherit;
+    margin-top: 20px;
+  }
+}
+
+.border-list{
+    border-left: 1px solid #dce0e0;
+    border-right: 1px solid #dce0e0;
+    border-bottom: 1px solid #dce0e0;
+}
+
+.divMainForm{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    max-width: 100%;
+    min-height:  100%;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+    -webkit-box-pack: start;
+    -webkit-box-align: center;
 }

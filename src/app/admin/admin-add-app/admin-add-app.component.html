@@ -1,7 +1,4 @@
-<div fxLayout="column" fxLayoutAlign="start center" class="background-color-fond" style="height: 100%">
-  <button routerLink="/admin/addApp" color="primary" md-mini-fab class="example-fab">
-      <md-icon>add</md-icon>
-    </button>
+<div class="background-color-fond divMainForm">
   <div class="flex-item margin-between width100" fxLayout="row" fxLayoutAlign="center center">
     <h1 class="title-manageApp">Manage the Applications catalog</h1>
   </div>
@@ -16,4 +13,7 @@
       <button md-mini-fab color="primary" (click)="openDialog(application._id)"><md-icon>delete</md-icon></button>
     </md-list-item>
   </md-list>
+  <button routerLink="/admin/addApp" color="primary" md-mini-fab class="example-fab">
+      <md-icon>add</md-icon>
+  </button>
 </div>

@@ -1,8 +1,8 @@
-<div  fxLayout="column" fxLayoutAlign="start center" class="background-color-fond" style="height: 100%">  
-  <div class="flex-item margin-between width100" fxLayout="row" fxLayoutAlign="center center">
-    <h1 class="title-addTurnkey">Add an Application</h1>
-  </div>  
-  <div fxFlex="70" class="example-form" style="margin-top: 20px">
+<div class="example-form background-color-fond divMainForm">
+  <div class="divMain background-color-fond" style="margin-top: 20px">
+    <div class="flex-item margin-between width100" fxLayout="row" fxLayoutAlign="center center">
+      <h1 class="title-addApp">Add an Application</h1>
+    </div>
     <md-input-container style="width: 100%">
       <input mdInput placeholder="Application Name" class="input-name" [(ngModel)]="name">
     </md-input-container>
@@ -12,6 +12,10 @@
     <md-input-container style="width: 100%">
       <input mdInput placeholder="Linux command to get the app" class="input-name" [(ngModel)]="RunCmd">
     </md-input-container>
+    <div class="warning" fxLayout="row" fxLayoutAlign="center center">
+      <md-icon style="margin-top:0px">warning</md-icon>
+      <p class="text-warning">You must be shure your installation command works on each OS !</p>
+    </div>
     <div class="marginTop marginBottom" fxLayout="row" fxLayoutAlign="end none">
       <button md-raised-button color="primary" (click)="postApplication()">Add Application !</button>
     </div>

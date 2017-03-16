@@ -31,8 +31,23 @@ export class AdminAddAddVmComponent implements OnInit {
   }
 
   postCatalog() {
-    this.vmService.postCatalog(this.name, this.info, this.FromCmd).subscribe(data => {
-      console.log(data);
-    }, err => console.log(err));
+    if(this.name && this.info && this.FromCmd){
+      this.vmService.postCatalog(this.name, this.info, this.FromCmd).subscribe(data => {
+        console.log(data);
+        this.router.navigate(['admin/manageOS']);
+        this.snackBar.open('OS successfully added', 'ok', {
+          duration: 9000,
+        });
+      }, err => {
+          console.log('Respond', err);
+          this.snackBar.open('Error : OS not created', 'ok', {
+            duration: 9000,
+          });
+      });
+    } else {
+      this.snackBar.open('Error : You must choose a name, an information and a command line !', 'ok', {
+      duration: 9000,
+      });
+    }
   }
 }

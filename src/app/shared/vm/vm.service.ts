@@ -90,7 +90,7 @@ export class VmService {
 
   destroyCatalog(id: string): Observable < any > {
     return this.authHttp.delete(`api/catalogs/${id}`)
-      .map(this.extractData)
+      .map(res => res.json())
       .catch(this.handleError);
   }
 
