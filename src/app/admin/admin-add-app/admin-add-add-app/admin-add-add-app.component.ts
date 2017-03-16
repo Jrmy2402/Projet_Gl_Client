@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit
+} from '@angular/core';
 import {
   MdDialog,
   MdDialogRef,
@@ -7,7 +10,9 @@ import {
 import {
   VmService
 } from '../../../shared/vm/vm.service';
-import { Router } from '@angular/router';
+import {
+  Router
+} from '@angular/router';
 
 @Component({
   selector: 'app-admin-add-add-app',
@@ -26,8 +31,8 @@ export class AdminAddAddAppComponent implements OnInit {
 
   }
 
-  postApplication() {
-    if (this.name && this.info && this.RunCmd) {
+ postApplication() {
+    if(this.name && this.info && this.RunCmd){
       this.vmService.postApplication(this.name, this.info, this.RunCmd).subscribe(data => {
         console.log(data);
         this.router.navigate(['admin/manageApp']);
