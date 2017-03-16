@@ -18,7 +18,7 @@ import {
   styleUrls: ['./admin-add-vm.component.scss']
 })
 export class AdminAddVmComponent implements OnInit {
-listApplication: Array < any > = [];
+  listOS: Array < any > = [];
   selectedOption: string;
 
   constructor(private vmService: VmService, public dialogConfirmation: MdDialog) {}
@@ -27,10 +27,10 @@ listApplication: Array < any > = [];
     this.vmService.getCatalog().subscribe(data => {
       console.log(data);
       for (const d of data) {
-        this.listApplication.push(d);
+        this.listOS.push(d);
       }
     }, error => {
-      console.log('Réponse', error);
+      console.log('Respond', error);
     });
   }
   openDialog(id: any) {
@@ -46,6 +46,9 @@ listApplication: Array < any > = [];
   destroyCatalog(Id: string) {
     this.vmService.destroyCatalog(Id).subscribe(data => {
       console.log(data);
+      this.listOS = this.listOS.filter(d => {
+        return d._id !== Id;
+      });
     }, err => console.log(err));
   }
 }

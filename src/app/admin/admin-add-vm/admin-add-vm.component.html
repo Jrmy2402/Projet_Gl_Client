@@ -1,15 +1,19 @@
-<div  fxLayout="column" fxLayoutAlign="start center" class="background-color-fond" style="height: 100%">
-    <div class="flex-item margin-between width100" fxLayout="row" fxLayoutAlign="center center">
-        <h1 class="title-manageVM">Manage the OS catalog</h1>
+<div class="background-color-fond divMainForm">
+  <div class="flex-item margin-between width100" fxLayout="row" fxLayoutAlign="center center">
+    <h1 class="title-manageOS">Manage the Distribution catalog</h1>
+  </div>
+  <md-list class="listShadow">
+    <div class="headerMe">
+      <span class="title-liste">Distribution catalog :</span>
     </div>
-    <md-list class="listShadow">
-      <div class="headerMe">
-        <span class="title-liste">Choose your distribution :</span>
-      </div>
-      <md-list-item *ngFor="let folder of catalogs" class="border-list cursorPointer">
-        <md-icon md-list-avatar>important_devices</md-icon>
-        <h4 md-line>{{folder.name}}</h4>
-        <p md-line> {{folder.info}} </p>
-      </md-list-item>
-    </md-list>
+    <md-list-item *ngFor="let OS of listOS" class="border-list cursorPointer">
+      <md-icon md-list-avatar>important_devices</md-icon>
+      <h4 md-line>{{OS.name}}</h4>
+      <p md-line> {{OS.info}} </p>
+      <button md-mini-fab color="primary" (click)="openDialog(OS._id)"><md-icon>delete</md-icon></button>
+    </md-list-item>
+  </md-list>
+  <button routerLink="/admin/addOS" color="primary" md-mini-fab class="example-fab">
+      <md-icon>add</md-icon>
+  </button>
 </div>

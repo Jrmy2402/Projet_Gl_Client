@@ -1,3 +1,23 @@
-<p>
-  admin-add-add-vm works!
-</p>
+<div class="example-form background-color-fond divMainForm">
+  <div class="divMain background-color-fond" style="margin-top: 20px">
+    <div class="flex-item margin-between width100" fxLayout="row" fxLayoutAlign="center center">
+      <h1 class="title-addOS">Add a Distribution</h1>
+    </div>
+    <md-input-container style="width: 100%">
+      <input mdInput placeholder="OS Name" class="input-name" [(ngModel)]="name">
+    </md-input-container>
+    <md-input-container style="width: 100%">
+      <input mdInput placeholder="OS Informations" class="input-name" [(ngModel)]="info">
+    </md-input-container>
+    <md-input-container style="width: 100%">
+      <input mdInput placeholder="Linux command to install the OS" class="input-name" [(ngModel)]="FromCmd">
+    </md-input-container>
+    <div class="warning" fxLayout="row" fxLayoutAlign="center center">
+      <md-icon style="margin-top:0px">warning</md-icon>
+      <p class="text-warning">You must be shure all your application installation command will work on your new OS !</p>
+    </div>
+    <div class="marginTop marginBottom" fxLayout="row" fxLayoutAlign="end none">
+      <button md-raised-button color="primary" (click)="postCatalog()">Add OS !</button>
+    </div>
+  </div>
+</div>

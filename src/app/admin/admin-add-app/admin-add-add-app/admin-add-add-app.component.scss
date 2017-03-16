@@ -2,7 +2,7 @@
     height: 100%
 }
 
-.title-addTurnkey {
+.title-addApp {
   font-weight: 300;
   font-size: 38px;
   text-align: center;
@@ -45,4 +45,36 @@
 
 .marginBottom{
     margin-bottom: 24px;
+}
+
+.divMain{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.divMainForm{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    max-width: 100%;
+    min-height:  100%;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+    -webkit-box-pack: start;
+    -webkit-box-align: center;
+}
+
+.text-warning {
+  font-weight: 200;
+  font-size: 18px;
+  text-align: center;
+  margin-left: 20px;
+}
+
+.warning {
+    color:red;
 }
