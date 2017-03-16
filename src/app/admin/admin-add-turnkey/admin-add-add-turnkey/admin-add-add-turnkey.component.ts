@@ -92,7 +92,6 @@ export class AdminAddAddTurnkeyComponent implements OnInit {
     }
     if(this.distribution && this.info){
       console.log(this.distribution, this.applicationschoose);
-      debugger
       this.vmService.postTurnkey(this.distribution, this.info, this.applicationschoose)
         .subscribe(data => {
           console.log('Réponse', data);

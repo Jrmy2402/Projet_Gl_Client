@@ -16,20 +16,21 @@ import { Router } from '@angular/router';
 })
 export class AdminAddAddAppComponent implements OnInit {
 
-  constructor(private vmService: VmService, public snackBar: MdSnackBar, private router: Router) {}
+  name: string;
+  info: string;
+  RunCmd: string;
 
-  name: String;
-  info: String;
-  RunCmd: String;
+  constructor(private vmService: VmService, public snackBar: MdSnackBar, private router: Router) {}
 
   ngOnInit() {
 
   }
- 
- postApplication() {
-    if(this.name && this.info && this.RunCmd){
+
+  postApplication() {
+    if (this.name && this.info && this.RunCmd) {
       this.vmService.postApplication(this.name, this.info, this.RunCmd).subscribe(data => {
         console.log(data);
+        this.router.navigate(['admin/manageApp']);
         this.snackBar.open('Application successfully added', 'ok', {
           duration: 9000,
         });

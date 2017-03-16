@@ -98,10 +98,10 @@ export class VmService {
       .map(this.extractData)
       .catch(this.handleError);
   }
-  
+
   destroyApplication(id: string): Observable < any > {
     return this.authHttp.delete(`api/applis/${id}`)
-      .map(this.extractData)
+      .map(res => res.json())
       .catch(this.handleError);
   }
 

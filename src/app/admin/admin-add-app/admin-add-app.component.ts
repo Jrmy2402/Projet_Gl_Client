@@ -36,7 +36,7 @@ export class AdminAddAppComponent implements OnInit {
     });
   }
   openDialog(id: any) {
-    let dialogRef = this.dialogConfirmation.open(DialogConfirmationComponent);
+    const dialogRef = this.dialogConfirmation.open(DialogConfirmationComponent);
     dialogRef.afterClosed().subscribe(result => {
       this.selectedOption = result;
       if (this.selectedOption === 'YES') {
@@ -48,6 +48,9 @@ export class AdminAddAppComponent implements OnInit {
   destroyApplication(Id: string) {
     this.vmService.destroyApplication(Id).subscribe(data => {
       console.log(data);
+      this.listApplication = this.listApplication.filter(d => {
+        return d._id !== Id;
+      });
     }, err => console.log(err));
   }
 }
