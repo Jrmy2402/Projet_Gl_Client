@@ -39,7 +39,7 @@ app.use('/api', proxy('http://localhost:9000', {
 
 app.all("/sock/*", function(req, socket, head) {
     console.log('redirecting to realtime api');
-    apiProxy.ws(req, socket, head, {target: 'ws://localhost:9000/socket.io/'});
+    apiProxy.ws(req, socket, head, {target: 'http://localhost:9000/socket.io/'});
 });
 
 
