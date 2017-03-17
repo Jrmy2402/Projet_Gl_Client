@@ -3,7 +3,8 @@ const path = require('path');
 const http = require('http');
 const bodyParser = require('body-parser');
 var proxy = require('express-http-proxy');
-
+var httpProxy = require('http-proxy');
+var apiProxy = httpProxy.createProxyServer();
 const app = express();
 
 app.use(bodyParser.json());
@@ -30,11 +31,17 @@ app.use('/api', proxy('http://localhost:9000', {
   }
 }));
 
-app.use('/sock/', proxy('http://localhost:9000/socket.io/', {
-  forwardPath: function(req, res) {
-    return require('url').parse('/socket.io/'+req.url).path;
-  }
-}));
+// app.use('/sock/', proxy('http://localhost:9000/socket.io/', {
+//   forwardPath: function(req, res) {
+//     return require('url').parse('/socket.io/'+req.url).path;
+//   }
+// }));
+
+app.all("/socket.io/*", function(req, socket, head) {
+    console.log('redirecting to realtime api');
+    apiProxy.ws(req, socket, head, {target: 'ws://localhost:9000'});
+});
+
 
 // catch all
 app.get('*', (req, res) => {
