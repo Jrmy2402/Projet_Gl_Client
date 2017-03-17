@@ -3,7 +3,8 @@ const path = require('path');
 const http = require('http');
 const bodyParser = require('body-parser');
 var proxy = require('express-http-proxy');
-
+var httpProxy = require('http-proxy');
+var apiProxy = httpProxy.createProxyServer();
 const app = express();
 
 app.use(bodyParser.json());
@@ -30,13 +31,33 @@ app.use('/api', proxy('http://localhost:9000', {
   }
 }));
 
+// app.use('/sock/', proxy('http://localhost:9000/socket.io/', {
+//   forwardPath: function(req, res) {
+//     return require('url').parse('/socket.io/'+req.url).path;
+//   }
+// }));
+
+app.all("/sock/*", function(req, socket, head) {
+    console.log('redirecting to realtime api');
+    proxy('http://localhost:9000/socket.io/', {
+    forwardPath: function(req, res) {
+      console.log(req.url, require('url').parse('/socket.io/'+req.url).path);
+      return require('url').parse('/socket.io/'+req.url).path;
+    }});
+    // apiProxy.ws(req, socket, head, {target: 'http://localhost:9000/socket.io/'});
+});
+
+
 // catch all
 app.get('*', (req, res) => {
 	res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
 
-const port = process.env.port || '3001';
+const port = process.env.port || '80';
 app.set('port', port);
 
 const server = http.createServer(app);
+// server.on('upgrade', function (req, socket, head) {
+//   proxy.ws(req, socket, head);
+// });
 server.listen(port, () => console.log(`API running on port ${port}`));

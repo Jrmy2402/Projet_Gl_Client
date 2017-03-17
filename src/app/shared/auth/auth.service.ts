@@ -83,11 +83,14 @@ export class AuthService {
     if (error instanceof Response) {
       const body = error.json() || '';
       const err = body.errors || JSON.stringify(body);
-      if (err.email.message) {
+      if (err && err.email && err.email.message) {
         errMsg = err.email.message;
-      } else {
-        errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
+      } else if (body.message) {
+        errMsg = body.message;
       }
+      // else {
+      //   errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
+      // }
     } else {
       errMsg = error.message ? error.message : error.toString();
     }

@@ -7,6 +7,7 @@
     <button md-button class="button-navbar" (click)="openDialogInscription()">Inscription</button>  
   </div>
   <div *ngIf="authService.isLogged()" class="button-navbar">
+    <button md-raised-button style="color: #1375bc;" *ngIf="!authService.isAdmin()"  onclick="window.location.href='../../../VMRS.apk'"><i class="material-icons icon_svg">file_download</i>DOWNLOAD APK</button>
     <button md-button *ngIf="!authService.isAdmin()" class="button-navbar" routerLink="/accesVm">Accès VM</button>
     <button md-button *ngIf="authService.isAdmin()" class="button-navbar" routerLink="/admin">Admin</button>
     <button md-button class="button-navbar" (click)="authService.disconnect()">Déconnexion</button>   

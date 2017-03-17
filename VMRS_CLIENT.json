@@ -1,0 +1,11 @@
+{
+  "apps": [{
+    "name": "VMRS Client",
+    "script": "server.js",
+    "autorestart": true,
+    "error_file": "log/error.log",
+    "env": {
+      "NODE_ENV": "production"
+    }
+    }]
+}
