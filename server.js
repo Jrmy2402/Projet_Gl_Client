@@ -30,6 +30,12 @@ app.use('/api', proxy('http://localhost:9000', {
   }
 }));
 
+app.use('/sock', proxy('http://localhost:9000', {
+  forwardPath: function(req, res) {
+    return require('url').parse('/sock'+req.url).path;
+  }
+}));
+
 // catch all
 app.get('*', (req, res) => {
 	res.sendFile(path.join(__dirname, 'dist/index.html'));
