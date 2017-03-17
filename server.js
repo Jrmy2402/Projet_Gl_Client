@@ -39,7 +39,7 @@ app.use('/api', proxy('http://localhost:9000', {
 
 app.all("/sock/*", function(req, socket, head) {
     console.log('redirecting to realtime api');
-    apiProxy.ws(req, socket, head, {target: 'ws://localhost:9000'});
+    apiProxy.ws(req, socket, head, {target: 'ws://localhost:9000/socket.io/'});
 });
 
 
@@ -52,4 +52,7 @@ const port = process.env.port || '80';
 app.set('port', port);
 
 const server = http.createServer(app);
+// server.on('upgrade', function (req, socket, head) {
+//   proxy.ws(req, socket, head);
+// });
 server.listen(port, () => console.log(`API running on port ${port}`));
