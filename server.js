@@ -32,7 +32,7 @@ app.use('/api', proxy('http://localhost:9000', {
 
 app.use('/sock/*', proxy('http://localhost:9000', {
   forwardPath: function(req, res) {
-    return require('url').parse('/socket.io'+req.url).path;
+    return require('url').parse('/socket.io/'+req.url).path;
   }
 }));
 
