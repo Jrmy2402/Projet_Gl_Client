@@ -16,7 +16,9 @@ export class AdminDashboardComponent implements OnInit, OnDestroy  {
   public connection2;
   cpuOs: any;
   free: any;
+  used: any;
   total: any;
+  pourc_used: any;
 
 
   constructor(private vmService: VmService) {}
@@ -32,9 +34,12 @@ export class AdminDashboardComponent implements OnInit, OnDestroy  {
       console.log(data);
       if (data.dataOSCPU) {
         this.cpuOs = data.dataOSCPU;
+        this.cpuOs = this.cpuOs.toFixed(2);
       } else if (data.dataOSMemory) {
-        this.free = data.dataOSMemory.free;
-        this.total = data.dataOSMemory.total;
+        this.free = (data.dataOSMemory.free / 1073741824).toFixed(1);
+        this.total = (data.dataOSMemory.total / 1073741824).toFixed(1);
+        this.used = (this.total - this.free).toFixed(1);
+        this.pourc_used = ((this.used / this.total)*100).toFixed(1);
       }
     });
     this.connection2 = this.vmService.getAdminSocket().subscribe(data => {
