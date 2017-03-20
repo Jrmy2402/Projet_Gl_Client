@@ -47,13 +47,13 @@ export class DialogInscriptionComponent implements OnInit {
       };
       this.authService.addUser(this.user)
         .subscribe(data => {
-          console.log('Réponse', data);
-          this.snackBar.open('Inscription réussie', 'ok', {
+          console.log('Respond', data);
+          this.snackBar.open('Sign up succeed', 'ok', {
             duration: 9000,
           });
           this.dialogRef.close();
         }, error => {
-          console.log('Réponse', error);
+          console.log('Respond', error);
           this.error = error;
         });
     }
@@ -67,9 +67,9 @@ export class DialogInscriptionComponent implements OnInit {
   errorMessageEmail() {
     // console.log(this.email);
     if (this.email === '' || this.email === undefined) {
-      return 'Ce champ est obligatoire.';
+      return 'This field is required.';
     } else if (!this.validateEmail(this.email)) {
-      return 'Veuillez saisir une adresse e-mail valide.';
+      return 'Please enter a valid e-mail.';
     }
   }
 
