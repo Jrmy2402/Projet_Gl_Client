@@ -165,7 +165,7 @@ export class VmService {
       if (token) {
         this.socket = io({
           'query': 'token=' + token,
-          'path': '/sock'
+          'path': '/socket.io'
         });
         this.socket.emit('statsVm', Id);
       }
@@ -186,7 +186,7 @@ export class VmService {
       if (token) {
         this.socket = io({
           'query': 'token=' + token,
-          'path': '/sock'
+          'path': '/socket.io'
         });
         this.socket.emit('statsOs', 'ok');
       }
@@ -214,7 +214,7 @@ export class VmService {
       if (token) {
         this.socket = io({
           'query': 'token=' + token,
-          'path': '/sock'
+          'path': '/socket.io'
         });
       }
       this.socket.on('vm:update', (data) => {
@@ -234,7 +234,7 @@ export class VmService {
       if (token) {
         this.socket = io({
           'query': 'token=' + token,
-          'path': '/sock'
+          'path': '/socket.io'
         });
       }
       this.socket.on('admin:update', (data) => {

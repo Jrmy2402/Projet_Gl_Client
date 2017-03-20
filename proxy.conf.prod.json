@@ -7,7 +7,7 @@
     "target": "http://172.31.1.25:9000",
     "secure": false
   },
-  "/sock/*": {
+  "/socket.io/*": {
     "target": "http://172.31.1.25:9000/socket.io/",
     "secure": false
   }
