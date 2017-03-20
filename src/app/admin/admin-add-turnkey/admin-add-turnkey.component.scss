@@ -30,17 +30,6 @@
     cursor:pointer;
 }
 
-.example-fab {
-  position: fixed;
-  right: 20px;
-  bottom: 20px;
-  z-index: 2;
-  @media (max-width: 600px) {
-    position: inherit;
-    margin-top: 20px;
-  }
-}
-
 .border-list{
     border-left: 1px solid #dce0e0;
     border-right: 1px solid #dce0e0;

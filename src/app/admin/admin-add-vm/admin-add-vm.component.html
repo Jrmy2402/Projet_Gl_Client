@@ -5,6 +5,9 @@
   <md-list class="listShadow">
     <div class="headerMe">
       <span class="title-liste">Distribution catalog :</span>
+      <button routerLink="/admin/addOS" color="primary" md-mini-fab class="add-button">
+        <md-icon>add</md-icon>
+      </button>
     </div>
     <md-list-item *ngFor="let OS of listOS" class="border-list cursorPointer">
       <md-icon md-list-avatar>important_devices</md-icon>
@@ -13,7 +16,4 @@
       <button md-mini-fab color="primary" (click)="openDialog(OS._id)"><md-icon>delete</md-icon></button>
     </md-list-item>
   </md-list>
-  <button routerLink="/admin/addOS" color="primary" md-mini-fab class="example-fab">
-      <md-icon>add</md-icon>
-  </button>
 </div>

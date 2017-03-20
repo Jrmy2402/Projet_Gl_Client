@@ -5,6 +5,9 @@
     <md-list class="listShadow">
       <div class="headerMe">
         <span class="title-liste">Turnkey Configuration catalog :</span>
+        <button routerLink="/admin/addTurnkey" color="primary" md-mini-fab class="add-button" >
+          <md-icon>add</md-icon>
+        </button>
       </div>
       <md-list-item *ngFor="let turnkey of listTurnkey" class="border-list cursorPointer">
         <md-icon md-list-avatar>important_devices</md-icon>
@@ -16,7 +19,4 @@
         <button md-mini-fab color="primary" (click)="openDialog(turnkey._id)"><md-icon>delete</md-icon></button>
       </md-list-item>
     </md-list>
-    <button routerLink="/admin/addTurnkey" color="primary" md-mini-fab class="example-fab" >
-      <md-icon>add</md-icon>
-    </button>
 </div>
