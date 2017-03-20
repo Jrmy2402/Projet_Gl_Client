@@ -123,6 +123,12 @@ export class VmService {
       .catch(this.handleError);
   }
 
+  getVmByUser(id: string): Observable < any > {
+    return this.authHttp.get(`api/users/${id}`)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
   getInfoVm(id: string): Observable < any > {
     return this.authHttp.get(`api/users/meVm/${id}`)
       .map(this.extractData)

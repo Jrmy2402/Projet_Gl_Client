@@ -17,6 +17,8 @@ import { AdminAddAddVmComponent } from './admin-add-vm/admin-add-add-vm/admin-ad
 import { AdminAddAppComponent } from './admin-add-app/admin-add-app.component';
 import { AdminAddAddAppComponent } from './admin-add-app/admin-add-add-app/admin-add-add-app.component';
 import { NavbarAdminService } from './navbar-admin/navbar-admin.service';
+import { ListVmUserComponent } from './admin-list-user/list-vm-user/list-vm-user.component';
+import { InfoVmUserComponent } from './admin-list-user/list-vm-user/info-vm-user/info-vm-user.component';
 
 @NgModule({
   imports: [
@@ -36,7 +38,9 @@ import { NavbarAdminService } from './navbar-admin/navbar-admin.service';
     AdminAddAddTurnkeyComponent,
     AdminAddAddVmComponent,
     AdminAddAppComponent,
-    AdminAddAddAppComponent
+    AdminAddAddAppComponent,
+    ListVmUserComponent,
+    InfoVmUserComponent
   ],
   providers: [NavbarAdminService]
 })

@@ -1,0 +1,46 @@
+<div class="background-color-fond divMainForm">  
+  <div class="flex-item margin-between width100" fxLayout="row" fxLayoutAlign="center center">
+      <h1 class="title-card">{{infoUser.firstname}} {{infoUser.lastname}} VM List</h1>
+  </div>
+  <div class="flex-item margin-between" *ngFor="let VM of listVM" style="width: 90%">
+    <md-card class="example-card">
+      <md-card-header>
+        <div md-card-avatar class="example-header-image">
+          <div *ngIf="VM.name === 'Ubuntu'"><img src="../../assets/ubuntu.png"></div>
+          <div *ngIf="VM.name === 'Debian'"><img src="../../assets/debian.png"></div>
+        </div>
+        <md-card-title>{{VM.OS}}</md-card-title>
+        <md-card-subtitle>{{VM.name}}</md-card-subtitle>        
+        <md-card-actions>
+          <button md-raised-button color="primary" routerLink="/admin/infoVMuser/{{VM._id}}" class="bouton_info_vm" [disabled]="VM.info === 'Loading'" fxShow="false" fxShow.gt-xs>+ D'INFOS</button>
+        </md-card-actions>
+      </md-card-header>
+      <md-card-content>
+        <div class="flex-container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center" style="width:100%">
+          <div class="flex-item info_vm" fxFlex="30" fxLayout="row" fxLayoutAlign="center center">
+            <div class="flex-item" fxLayout="column">@IP : </div>
+            <div class="flex-item detail_info_vm" fxLayout="column">{{VM.ip}}</div>
+            <div class="flex-item detail_info_vm" fxLayout="column" *ngIf="VM.ip === ''" style="color: darkorange">Deployment in progress</div>
+          </div>
+          <div class="flex-item info_vm" fxFlex="30" fxLayout="row" fxLayoutAlign="center center">
+            <div class="flex-item" fxLayout="column">Port SSH : </div>
+            <div class="flex-item detail_info_vm" fxLayout="column">{{VM.port}}</div>
+            <div class="flex-item detail_info_vm" fxLayout="column" *ngIf="VM.port === ''" style="color: darkorange">Deployment in progress</div>
+          </div>
+          <div class="flex-item info_vm" fxFlex="30" fxLayout="row" fxLayoutAlign="center center">
+            <div class="flex-item" fxLayout="column">Status : </div>
+            <div class="flex-item detail_info_vm" fxLayout="column" *ngIf="VM.info === 'Off'" style="color: red">Off</div>
+            <div class="flex-item detail_info_vm" fxLayout="column" *ngIf="VM.info === 'On'" style="color: limegreen">On</div>
+            <div class="flex-item detail_info_vm" fxLayout="column" *ngIf="VM.info === 'Loading'" style="color: darkorange">Deployment in progress</div>
+          </div>
+        </div>
+        <md-card-actions>
+          <button fxLayoutAlign="center center" md-raised-button color="primary" routerLink="/admin/infoVMuser/{{VM._id}}" [disabled]="VM.info === 'Loading'" fxHide.gt-xs>+ D'INFOS</button>
+        </md-card-actions>
+      </md-card-content>
+    </md-card>
+  </div>
+  <div *ngIf="load === false && !listVM"  class="flex-item margin-between">
+    This user don't have any VM yet.
+  </div>
+</div>

@@ -1,4 +1,33 @@
-<p>
-  admin-list-user works!
-  {{listUser}}
-</p>
+<div class="background-color-fond divMainForm">
+  <div class="flex-item margin-between width100" fxLayout="row" fxLayoutAlign="center center">
+      <h1 class="title-card">User List</h1>
+  </div>
+  <div class="flex-item margin-between" *ngFor="let user of listUser" style="width: 90%">
+    <md-card class="example-card">
+      <md-card-header>
+        <div md-card-avatar>
+          <md-icon color="primary" style="font-size:100px">person</md-icon>
+        </div>
+        <md-card-title style="margin-left: 80px">{{user.firstname}} {{user.lastname}}</md-card-title>
+        <md-card-subtitle style="margin-left: 90px">{{user.email}}</md-card-subtitle>        
+        <md-card-actions>
+          <button md-raised-button color="primary" routerLink="/admin/listUser/{{user._id}}" class="bouton_info_vm" fxShow="false" fxShow.gt-xs>+ D'INFOS</button>
+        </md-card-actions>
+      </md-card-header>
+      <md-card-content>
+        <div class="flex-container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center" style="width:100%">
+          <div class="flex-item info_vm" fxFlex="30" fxLayout="row" fxLayoutAlign="center center">
+            <div class="flex-item" fxLayout="column">Number of VM : </div>
+            <div class="flex-item detail_info_vm" fxLayout="column">{{user.Vms.length}}</div>
+          </div>
+        </div>
+        <md-card-actions>
+          <button fxLayoutAlign="center center" md-raised-button color="primary" routerLink="listUser/{{user._id}}" fxHide.gt-xs>+ D'INFOS</button>
+        </md-card-actions>
+      </md-card-content>
+    </md-card>
+  </div>
+  <div *ngIf="!listUser"  class="flex-item margin-between">
+    You don't have any user yet.
+  </div>
+</div>

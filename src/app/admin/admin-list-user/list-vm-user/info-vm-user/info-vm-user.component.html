@@ -1,0 +1,92 @@
+<div class="background-color-fond divMainForm">  
+  <div class="flex-item margin-between width100" fxLayout="row" fxLayoutAlign="center center">
+    <h1 class="title-card">VM Informations</h1>
+  </div>
+  <div class="flex-item margin-between" style="width: 90%">
+    <md-spinner fxFlex="100" color="primary" mode="indeterminate" *ngIf="!myVM" style="margin-top:10%; margin-left:auto; margin-right:auto"></md-spinner>
+    <md-card class="example-card" *ngIf="myVM">
+      <md-card-header>
+        <div md-card-avatar class="example-header-image">
+          <div *ngIf="myVM.name === 'Ubuntu'"><img src="../../assets/ubuntu.png"></div>
+          <div *ngIf="myVM.name === 'Debian'"><img src="../../assets/debian.png"></div>
+        </div>
+        <md-card-title>{{myVM.OS}}</md-card-title>
+        <md-card-subtitle>{{myVM.name}}</md-card-subtitle>
+      </md-card-header>
+      <md-card-content>
+        <div class="flex-container first_flex" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center" style="width:100%">
+          <div class="flex-item info_vm" fxFlex="30" fxLayout="row" fxLayoutAlign="center center">
+            <div class="flex-item" fxLayout="column">Add date : </div>
+            <div class="flex-item detail_info_vm" fxLayout="column">{{myVM.ad_date  | date }}</div>
+            <div class="flex-item detail_info_vm" fxLayout="column" *ngIf="myVM.port === ''" style="color: darkorange">Deployment in progress</div>
+          </div>
+          <div class="flex-item info_vm" fxFlex="30" fxLayout="row" fxLayoutAlign="center center">
+            <div class="flex-item" fxLayout="column">@IP : </div>
+            <div class="flex-item detail_info_vm" fxLayout="column">{{myVM.ip}}</div>
+            <div class="flex-item detail_info_vm" fxLayout="column" *ngIf="myVM.ip === ''" style="color: darkorange">Deployment in progress</div>
+          </div>
+          <div class="flex-item info_vm" fxFlex="30" fxLayout="row" fxLayoutAlign="center center">
+            <div class="flex-item" fxLayout="column">Status : </div>
+            <div class="flex-item detail_info_vm" fxLayout="column" *ngIf="myVM.info === 'Off'" style="color: red">Off</div>
+            <div class="flex-item detail_info_vm" fxLayout="column" *ngIf="myVM.info === 'On'" style="color: green">On</div>
+            <div class="flex-item detail_info_vm" fxLayout="column" *ngIf="myVM.info === 'Loading'" style="color: darkorange">Deployment in progress</div>
+          </div>
+        </div>
+        <div class="flex-container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center" style="width:100%">
+          <div class="flex-item info_vm" fxFlex="30" fxLayout="row" fxLayoutAlign="center center">
+            <div class="flex-item" fxLayout="column">Port SSH : </div>
+            <div class="flex-item detail_info_vm" fxLayout="column">{{myVM.port}}</div>
+            <div class="flex-item detail_info_vm" fxLayout="column" *ngIf="myVM.port === ''" style="color: darkorange">Deployment in progress</div>
+          </div>
+          <div class="flex-item info_vm" fxFlex="30" fxLayout="row" fxLayoutAlign="center center">
+            <div class="flex-item" fxLayout="column">Port HTTP : </div>
+            <div class="flex-item detail_info_vm" fxLayout="column">{{myVM.portHttp}}</div>
+            <div class="flex-item detail_info_vm" fxLayout="column" *ngIf="myVM.port === ''" style="color: darkorange">Deployment in progress</div>
+          </div>
+          <div class="flex-item info_vm" fxFlex="30" fxLayout="row" fxLayoutAlign="center center">
+            <div class="flex-item" fxLayout="column">Port HTTPS : </div>
+            <div class="flex-item detail_info_vm" fxLayout="column">{{myVM.portHttps}}</div>
+            <div class="flex-item detail_info_vm" fxLayout="column" *ngIf="myVM.port === ''" style="color: darkorange">Deployment in progress</div>
+          </div>
+        </div>
+        <div class="flex-container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center" style="width:100%">
+          <div class="flex-item info_vm" fxFlex="30" fxLayout="row" fxLayoutAlign="center center">
+            <div class="flex-item" fxLayout="column">CPU : </div>
+            <div class="flex-item detail_info_vm" fxLayout="column">{{myVM.feedback.cpu}}</div>
+            <div class="flex-item detail_info_vm" fxLayout="column" *ngIf="myVM.port === ''" style="color: darkorange">Deployment in progress</div>
+          </div>
+          <div class="flex-item info_vm" fxFlex="30" fxLayout="row" fxLayoutAlign="center center">
+            <div class="flex-item" fxLayout="column">Memory : </div>
+            <div class="flex-item detail_info_vm" fxLayout="column">{{myVM.feedback.memory.usage}} / {{myVM.feedback.memory.total}} ({{myVM.feedback.memory.percentage}}%)</div>
+            <div class="flex-item detail_info_vm" fxLayout="column" *ngIf="myVM.port === ''" style="color: darkorange">Deployment in progress</div>
+          </div>
+          <div class="flex-item info_vm" fxFlex="30" fxLayout="row" fxLayoutAlign="center center">
+            <div class="flex-item" fxLayout="column">Block I/O : </div>
+            <div class="flex-item detail_info_vm" fxLayout="column">{{myVM.feedback.block.usage}} / {{myVM.feedback.block.total}}</div>
+            <div class="flex-item detail_info_vm" fxLayout="column" *ngIf="myVM.port === ''" style="color: darkorange">Deployment in progress</div>
+          </div>
+        </div>
+        <div class="flex-container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center" style="width:100%">
+          <div class="flex-item info_vm" fxFlex="30" fxLayout="row" fxLayoutAlign="center center">
+            <div class="flex-item" fxLayout="column">Network I/O : </div>
+            <div class="flex-item detail_info_vm" fxLayout="column">{{myVM.feedback.network.usage}} / {{myVM.feedback.network.total}}</div>
+            <div class="flex-item detail_info_vm" fxLayout="column" *ngIf="myVM.port === ''" style="color: darkorange">Deployment in progress</div>
+          </div>
+        </div>
+        <md-divider style ="margin-top: 20px"></md-divider>
+        <div class="flex-item info_vm" fxFlex="100" fxLayout="column" fxLayoutAlign="center center">
+          <div class="flex-item" fxLayout="row"fxLayoutAlign="center center" style="width:100%; margin-top: 15px">Originally installed application : </div>
+          <div class="flex-item detail_info_vm" fxLayout="row" *ngFor="let application of myVM.application">{{application}}</div>
+        </div>
+        <div class="flex-container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="end center" style="width:100%">
+          <md-spinner class="flex-item circle" fxFlex="8" color="primary" mode="indeterminate" *ngIf="load_circle"></md-spinner>
+          <button md-raised-button class="flex-item" fxFlex="12" fxFlex.xs="1" fxLayout="column" color="primary" (click)="startVM(myVM._id)" class="button_vm" [disabled]="stop || load_circle"><i class="material-icons icon_svg">play_arrow</i>  Start VM</button>
+          <div class="flex-item" fxFlex="1" fxLayout="column"></div>
+          <button md-raised-button class="flex-item" fxFlex="12" fxFlex.xs="1" fxLayout="column" color="primary" (click)="stopVM(myVM._id)" class="button_vm" [disabled]="start || load_circle"><i class="material-icons icon_svg">pause</i>  Stop VM</button>
+          <div class="flex-item" fxFlex="1" fxLayout="column"></div>  
+          <button md-raised-button class="flex-item" fxFlex="12" fxFlex.xs="1" fxLayout="column" color="primary" (click)="removeVM(myVM._id)" class="button_vm"><i class="material-icons icon_svg">clear</i>  Remove VM</button>
+        </div>
+      </md-card-content>
+    </md-card>
+  </div>
+</div>

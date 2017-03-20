@@ -1,36 +1,52 @@
-<div  fxLayout="column" fxLayoutAlign="start center" class="background-color-fond" style="height: 100%">
+<div class="background-color-fond divMainForm">
     <div class="flex-item margin-between width100" fxLayout="row" fxLayoutAlign="center center">
         <h1 class="title-dashboard">Dashboard</h1>
     </div>
-    <div  fxLayout="row" fxLayoutAlign="space-around stretch" style="width: 90%">
+    <div  fxLayout.gt-md="row" fxLayout="column" fxLayoutAlign="space-around stretch" class="width90">
         <md-card class="example-card">
             <div fxLayout="row" fxLayoutAlign=" center" style="height: 100%">
-                <md-icon fxFlex="35" color="primary" style="font-size: 140px; padding-right: 20px">supervisor_account</md-icon>
-                <div fxFlex="20" class="title-card-dashboard">{{DashBoardView.nbuser}}</div>
-                <div fxFlex="45" class="text-card" style="text-align: left!important">Subscribers</div>
+                <md-icon fxFlex="35" color="primary" class="logo_user">supervisor_account</md-icon>
+                <div fxFlex="35" class="title-card-dashboard">{{DashBoardView.nbuser}}</div>
+                <div fxFlex="30" class="text-card" style="text-align: left!important">Subscribers</div>
             </div>
         </md-card>
         <md-card class="example-card">
             <div fxLayout="row" fxLayoutAlign=" center" style="height: 100%">
-                <md-icon fxFlex="35" color="primary" style="font-size: 133px; padding-right: 20px">computer</md-icon>
-                <div fxFlex="20" class="title-card-dashboard">{{DashBoardView.nbvm}}</div>
-                <div fxFlex="45" class="text-card" style="text-align: left!important">VM created</div>
+                <md-icon fxFlex="35" color="primary" class="logo_VM">computer</md-icon>
+                <div fxFlex="35" class="title-card-dashboard">{{DashBoardView.nbvm}}</div>
+                <div fxFlex="30" class="text-card" style="text-align: left!important">VM created</div>
             </div>
         </md-card>
     </div>
-    <div class="flex-item" fxLayout="row" fxLayoutAlign="space-around stretch" style="width: 90%; margin-top: 50px!important">
+    <div class="flex-item" fxLayout.gt-md="row" fxLayout="column" fxLayoutAlign="space-around stretch" class="width90 margintop">
         <md-card class="example-card">
             <div fxLayout="row" fxLayoutAlign=" center" style="height: 100%">
-                <md-icon fxFlex="30" color="primary" style="font-size: 122px; padding-right: 20px">account_balance</md-icon>
-                <div fxFlex="30" class="title-card-dashboard">{{DashBoardView.prix}}€</div>
-                <div fxFlex="40" class="text-card" style="text-align: left!important">Collected</div>
+                <md-icon fxFlex="35" color="primary" class="logo_prix">account_balance</md-icon>
+                <div fxFlex="35" class="title-card-dashboard">{{DashBoardView.prix}}€</div>
+                <div fxFlex="30" class="text-card" style="text-align: left!important">Collected</div>
             </div>
         </md-card>
         <md-card class="example-card">
             <div fxLayout="row" fxLayoutAlign=" center" style="height: 100%">
-                <!--<md-icon fxFlex="35" color="primary" style="font-size: 133px; padding-right: 20px">computer</md-icon>-->
-                <div fxFlex="20" class="title-card-dashboard">?</div>
-                <div fxFlex="45" class="text-card" style="text-align: left!important">?</div>
+                <md-icon fxFlex="35" color="primary" class="logo_cpu">memory</md-icon>
+                <div fxFlex="35" class="title-card-dashboard">{{cpuOs}}%</div>
+                <div fxFlex="30" class="text-card" style="text-align: left!important">Server CPU</div>
+            </div>
+        </md-card>
+    </div>
+    <div class="flex-item" fxLayout.gt-md="row" fxLayout="column" fxLayoutAlign="space-around stretch" class="width90 margintop">
+        <md-card class="example-card">
+            <div fxLayout="row" fxLayoutAlign=" center" style="height: 100%">
+                <md-icon fxFlex="35" color="primary" class="logo_memory">storage</md-icon>
+                <div fxFlex="35" class="title-card-dashboard">{{used}}Go / {{total}}Go</div>
+                <div fxFlex="30" class="text-card" style="text-align: left!important">Server space used</div>
+            </div>
+        </md-card>
+        <md-card class="example-card">
+            <div fxLayout="row" fxLayoutAlign=" center" style="height: 100%">
+                <md-icon fxFlex="35" color="primary" class="logo_memory">storage</md-icon>
+                <div fxFlex="35" class="title-card-dashboard">{{pourc_used}}%</div>
+                <div fxFlex="30" class="text-card" style="text-align: left!important">Server space used</div>
             </div>
         </md-card>
     </div>
