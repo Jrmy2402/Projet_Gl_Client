@@ -8,8 +8,8 @@
       <md-card class="example-card" *ngIf="myVM">
         <md-card-header>
           <div md-card-avatar class="example-header-image">
-            <div *ngIf="myVM.name === 'Ubuntu'"><img src="../../assets/ubuntu.png"></div>
-            <div *ngIf="myVM.name === 'Debian'"><img src="../../assets/debian.png"></div>
+            <div *ngIf="VM.name.toLowerCase().includes('ubuntu')"><img src="../../assets/ubuntu.png"></div>
+            <div *ngIf="VM.name.toLowerCase().includes('debian')"><img src="../../assets/debian.png"></div>
           </div>
           <md-card-title>{{myVM.OS}}</md-card-title>
           <md-card-subtitle>{{myVM.name}}</md-card-subtitle>
