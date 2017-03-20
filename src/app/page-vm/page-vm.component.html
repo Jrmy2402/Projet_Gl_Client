@@ -1,7 +1,7 @@
 <div  fxLayout="row" fxLayoutAlign="center start" class="background-color-fond container-child">
   
   <div fxFlex="80" fxFlex.xs="95" class="flex-container" fxLayout="column" fxLayoutAlign="center center">
-    <button routerLink="/addVm" color="primary" mdTooltip="Ajouter une VM!" mdTooltipPosition="before" md-mini-fab class="example-fab" >
+    <button routerLink="/addVm" color="primary" mdTooltip="Add a VM!" mdTooltipPosition="before" md-mini-fab class="example-fab" >
       <md-icon>add</md-icon>
     </button>
     <div class="flex-item margin-between width100" fxLayout="row" fxLayoutAlign="center center">
@@ -17,7 +17,7 @@
           <md-card-title>{{VM.OS}}</md-card-title>
           <md-card-subtitle>{{VM.name}}</md-card-subtitle>        
           <md-card-actions>
-            <button md-raised-button color="primary" routerLink="/accesVm/{{VM._id}}" class="bouton_info_vm" [disabled]="VM.info === 'Loading'" fxShow="false" fxShow.gt-xs>+ D'INFOS</button>
+            <button md-raised-button color="primary" routerLink="/accesVm/{{VM._id}}" class="bouton_info_vm" [disabled]="VM.info === 'Loading'" fxShow="false" fxShow.gt-xs>+ INFOS</button>
           </md-card-actions>
         </md-card-header>
         <md-card-content>
@@ -40,13 +40,13 @@
             </div>
           </div>
           <md-card-actions>
-            <button fxLayoutAlign="center center" md-raised-button color="primary" routerLink="/accesVm/{{VM._id}}" [disabled]="VM.info === 'Loading'" fxHide.gt-xs>+ D'INFOS</button>
+            <button fxLayoutAlign="center center" md-raised-button color="primary" routerLink="/accesVm/{{VM._id}}" [disabled]="VM.info === 'Loading'" fxHide.gt-xs>+ INFOS</button>
           </md-card-actions>
         </md-card-content>
       </md-card>
     </div>
     <div *ngIf="load === false && myVM.length === 0"  class="flex-item margin-between">
-      Vous n'avez pas encore de VM
+      You don't have any VM yet.
     </div>
   </div>
 </div>

@@ -94,14 +94,14 @@ export class AddVmParticularComponent implements OnInit {
       .subscribe(data => {
         console.log('Réponse', data);
         this.applicationschoose = [];
-        this.snackBar.open('Payement : Réussi, la vm sera disponible dans quelques minutes', 'ok', {
+        this.snackBar.open('Payment succeed ! The VM will be usable in a few minutes.', 'ok', {
           duration: 9000,
         });
         this.router.navigate(['accesVm']);
       }, error => {
         console.log('Réponse', error);
         this.applicationschoose = [];
-        this.snackBar.open('Erreur : Payement, veuillez réessayer', 'ok', {
+        this.snackBar.open('Payment do not succeed. Please try again.', 'ok', {
           duration: 9000,
         });
       });
