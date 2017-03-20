@@ -1,14 +1,14 @@
 {
   "/api": {
-    "target": "http://localhost:80",
+    "target": "http://localhost:9000",
     "secure": false
   },
   "/auth": {
-    "target": "http://localhost:80",
+    "target": "http://localhost:9000",
     "secure": false
   },
   "/socket.io/": {
-    "target": "http://localhost:80/socket.io/",
+    "target": "http://localhost:9000/socket.io/",
     "secure": false
   }
 
