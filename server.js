@@ -31,20 +31,21 @@ app.use('/api', proxy('http://localhost:9000', {
   }
 }));
 
-// app.use('/sock/', proxy('http://localhost:9000/socket.io/', {
+// app.all('/socket.io/*', proxy('http://localhost:9000', {
 //   forwardPath: function(req, res) {
-//     return require('url').parse('/socket.io/'+req.url).path;
+//     console.log(require('url').parse('http://localhost:9000/socket.io'+req.url).path)
+//     return require('url').parse('/socket.io'+req.url).path;
 //   }
 // }));
 
-app.all("/sock/*", function(req, socket, head) {
+app.all("/socket.io/*", function(req, socket, head) {
     console.log('redirecting to realtime api');
-    proxy('http://localhost:9000/socket.io/', {
-    forwardPath: function(req, res) {
-      console.log(req.url, require('url').parse('/socket.io/'+req.url).path);
-      return require('url').parse('/socket.io/'+req.url).path;
-    }});
-    // apiProxy.ws(req, socket, head, {target: 'http://localhost:9000/socket.io/'});
+    // proxy('http://localhost:9000/socket.io/', {
+    // forwardPath: function(req, res) {
+    //   console.log(req.url, require('url').parse('/socket.io/'+req.url).path);
+    //   return require('url').parse('/socket.io/'+req.url).path;
+    // }});
+    apiProxy.ws(req, socket, head, {target: 'http://localhost:9000/socket.io/'});
 });
 
 

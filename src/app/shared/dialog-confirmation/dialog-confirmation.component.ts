@@ -23,5 +23,4 @@ export class DialogConfirmationComponent implements OnInit {
   closeDialog() {
     this.dialogRef.close();
   }
-
 }

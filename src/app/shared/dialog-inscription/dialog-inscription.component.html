@@ -1,5 +1,5 @@
 <md-toolbar color="primary">
-  <span>Inscription</span>
+  <span>Sign up</span>
   <!-- This fills the remaining space of the current row -->
   <span class="example-fill-remaining-space"></span>
   <md-icon md-dialog-close (click)="closeDialog()" class="icon">clear</md-icon>
@@ -10,12 +10,12 @@
     <span class="error margin-text-error">{{error}}</span>
     <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center" class="width90 widthphone">
       <md-input-container dividerColor="{{msgNom.invalid && msgNom.touched ?'warn' : 'primary'}}" class="margin-input-container" [ngClass]="{'error': msgNom.invalid && msgNom.touched}">
-        <input  type="text" #msgNom="ngModel" [(ngModel)]="nom" name="nom" id="nom" mdInput placeholder="Nom" required>
-        <md-hint *ngIf="msgNom.invalid && msgNom.touched" [ngStyle]="{'color': 'red'}" align="start">Ce champ est obligatoire.</md-hint> 
+        <input  type="text" #msgNom="ngModel" [(ngModel)]="nom" name="nom" id="nom" mdInput placeholder="Last Name" required>
+        <md-hint *ngIf="msgNom.invalid && msgNom.touched" [ngStyle]="{'color': 'red'}" align="start">This field is required.</md-hint> 
       </md-input-container>
       <md-input-container class="margin-input-container margin-left" dividerColor="{{msgPrenom.invalid && msgPrenom.touched ?'warn' : 'primary'}}"  [ngClass]="{'error': msgPrenom.invalid && msgPrenom.touched}">
-        <input type="text" #msgPrenom="ngModel" [(ngModel)]="prenom" name="prenom" id="prenom" mdInput placeholder="Prenom" required>
-        <md-hint *ngIf="msgPrenom.invalid && msgPrenom.touched" [ngStyle]="{'color': 'red'}" align="start">Ce champ est obligatoire.</md-hint> 
+        <input type="text" #msgPrenom="ngModel" [(ngModel)]="prenom" name="prenom" id="prenom" mdInput placeholder="First Name" required>
+        <md-hint *ngIf="msgPrenom.invalid && msgPrenom.touched" [ngStyle]="{'color': 'red'}" align="start">This field is required.</md-hint> 
       </md-input-container>
     </div>
     <div fxFlex="90" class="width90 widthphone">
@@ -26,24 +26,24 @@
     </div>
     <div fxFlex="90" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center" class="width90 widthphone">
       <md-input-container fxFlex dividerColor="{{msgPassword.invalid && msgPassword.touched ?'warn' : 'primary'}}" class="margin-input-container" [ngClass]="{'error': msgPassword.invalid && msgPassword.touched}">
-        <input mdInput type="password" #msgPassword="ngModel" [(ngModel)]="password" name="password" id="password" placeholder="Mot de passe" required>
-        <md-hint *ngIf="msgPassword.invalid && msgPassword.touched" [ngStyle]="{'color': 'red'}" align="start">Ce champ est obligatoire.</md-hint>  
+        <input mdInput type="password" #msgPassword="ngModel" [(ngModel)]="password" name="password" id="password" placeholder="Password" required>
+        <md-hint *ngIf="msgPassword.invalid && msgPassword.touched" [ngStyle]="{'color': 'red'}" align="start">This field is required</md-hint>  
       </md-input-container>
       <md-input-container fxFlex class="margin-input-container margin-left" dividerColor="{{msgPasswordConf.invalid && msgPasswordConf.touched ?'warn' : 'primary'}}" [ngClass]="{'error': msgPasswordConf.invalid && msgPasswordConf.touched}">
-        <input mdInput type="password" #msgPasswordConf="ngModel" [(ngModel)]="password_conf" name="password_conf" id="password_conf" placeholder="Confirmation mot de passe"
+        <input mdInput type="password" #msgPasswordConf="ngModel" [(ngModel)]="password_conf" name="password_conf" id="password_conf" placeholder="Password confirmation"
           required>
-        <md-hint *ngIf="msgPasswordConf.invalid && msgPasswordConf.touched" [ngStyle]="{'color': 'red'}" align="start">Ce champ est obligatoire.</md-hint>  
+        <md-hint *ngIf="msgPasswordConf.invalid && msgPasswordConf.touched" [ngStyle]="{'color': 'red'}" align="start">This field is required.</md-hint>  
       </md-input-container>
     </div>
-    <button type="submit" md-raised-button class="width90 widthphone margin-button-inscription" color="primary" [disabled]="form.invalid">INSCRIPTION</button>
+    <button type="submit" md-raised-button class="width90 widthphone margin-button-inscription" color="primary" [disabled]="form.invalid">SIGN UP</button>
   </form>
   <md-divider class="width90"></md-divider>
   <div fxFlex="90" fxLayout="row" fxLayoutAlign="space-between center" class="width90 dialogButton">
     <div>
-      Déjà membre VMRS ?
+      Already VMRS member ?
     </div>
     <div>
-      <button md-button color="primary">CONNEXION</button>
+      <button md-button color="primary">LOG IN</button>
     </div>
   </div>
 </md-dialog-content>

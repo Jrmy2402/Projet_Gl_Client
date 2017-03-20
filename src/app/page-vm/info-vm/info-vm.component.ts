@@ -12,6 +12,13 @@ import {
   InfoVm
 } from './info-vm.interface';
 import {
+  MdDialog,
+  MdDialogRef
+} from '@angular/material';
+import {
+  DialogConfirmationComponent
+} from '../../shared/dialog-confirmation/dialog-confirmation.component';
+import {
   VmService
 } from '../../shared/vm/vm.service';
 import * as io from 'socket.io-client';
@@ -29,9 +36,10 @@ export class InfoVmComponent implements OnInit, OnDestroy {
   load_circle: Boolean = false;
   start: Boolean = false;
   stop: Boolean = false;
+  selectedOption: string;
   public connection;
 
-  constructor(private activatedRoute: ActivatedRoute, private vmService: VmService, private router: Router) {}
+  constructor(private activatedRoute: ActivatedRoute, private vmService: VmService, private router: Router, public dialogConfirmation: MdDialog) {}
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((params: Params) => {
@@ -78,6 +86,16 @@ export class InfoVmComponent implements OnInit, OnDestroy {
     }, err => console.log(err));
   }
 
+  openDialog(id: any) {
+    const dialogRef = this.dialogConfirmation.open(DialogConfirmationComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      this.selectedOption = result;
+      if (this.selectedOption === 'YES') {
+        this.removeVM(id);
+      }
+      console.log(this.selectedOption);
+    });
+  }
   removeVM (Id: string) {
     this.load_circle = true;
     this.vmService.removeVm(Id).subscribe(data => {

@@ -3,14 +3,14 @@
   <!-- This fills the remaining space of the current row -->
   <span class="example-fill-remaining-space"></span>
   <div *ngIf="!authService.isLogged()" class="button-navbar">
-    <button md-button class="button-navbar" (click)="openDialogConnexion()">Connexion</button>
-    <button md-button class="button-navbar" (click)="openDialogInscription()">Inscription</button>  
+    <button md-button class="button-navbar" (click)="openDialogConnexion()">Log in</button>
+    <button md-button class="button-navbar" (click)="openDialogInscription()">Sign up</button>  
   </div>
   <div *ngIf="authService.isLogged()" class="button-navbar">
-    <button md-raised-button style="color: #1375bc;" *ngIf="!authService.isAdmin()"  onclick="window.location.href='../../../VMRS.apk'"><i class="material-icons icon_svg">file_download</i>DOWNLOAD APK</button>
-    <button md-button *ngIf="!authService.isAdmin()" class="button-navbar" routerLink="/accesVm">Accès VM</button>
+    <button md-raised-button style="color: #1375bc;" *ngIf="!authService.isAdmin()"  onclick="window.location.href='../../../VMRS.apk'"><i class="material-icons icon_svg">file_download</i> APK</button>
+    <button md-button *ngIf="!authService.isAdmin()" class="button-navbar" routerLink="/accesVm">Your VM</button>
     <button md-button *ngIf="authService.isAdmin()" class="button-navbar" routerLink="/admin">Admin</button>
-    <button md-button class="button-navbar" (click)="authService.disconnect()">Déconnexion</button>   
+    <button md-button class="button-navbar" (click)="authService.disconnect()">Log out</button>   
   </div>
   <button *ngIf="authService.isInAdmin()" md-mini-fab class="example-fab" (click)="toggle()">
     <md-icon>view_headline</md-icon>

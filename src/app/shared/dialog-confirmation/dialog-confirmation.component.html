@@ -9,7 +9,7 @@
     <!--<h1 md-dialog-title>Dialog</h1>-->
     <div md-dialog-content>Are you sure ?</div>
     <div md-dialog-actions>
-      <button md-button (click)="dialogRef.close('NO')">NO</button>
-      <button md-button (click)="dialogRef.close('YES')">YES</button>
+      <button md-button class="no-button" (click)="dialogRef.close('NO')">NO</button>
+      <button md-button class="yes-button" (click)="dialogRef.close('YES')">YES</button>
     </div>
 </md-dialog-content>

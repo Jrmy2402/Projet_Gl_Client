@@ -33,16 +33,14 @@ md-divider{
     width: 100%!important;
   }
 }
-// .error{
-//   color: red!important;
-//   border-color: rgb(213,0,0);
-//   md-input-placeholder{
-//     color: red;
-//     border-color: rgb(213,0,0);
-//   }
-//   .md-input-placeholder{
-//     color: red!important;
-//   }
-// }
 
+.yes-button:hover {
+  background-color: #1375bc;
+  color: white;
+}
+
+.no-button:hover {
+  background-color: #1375bc;
+  color: white;
+}
 

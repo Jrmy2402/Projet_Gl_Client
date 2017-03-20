@@ -37,7 +37,7 @@ export class DialogInscriptionComponent implements OnInit {
   }
   Inscription(form: NgForm) {
     if (form.value.password !== form.value.password_conf){
-      this.error = 'Les mot de passe ne correspondent pas.';
+      this.error = 'Passwords do not match.';
     } else {
       this.user = {
           lastname: form.value.nom,

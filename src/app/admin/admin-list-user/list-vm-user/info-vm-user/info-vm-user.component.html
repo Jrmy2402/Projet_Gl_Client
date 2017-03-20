@@ -80,11 +80,11 @@
         </div>
         <div class="flex-container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="end center" style="width:100%">
           <md-spinner class="flex-item circle" fxFlex="8" color="primary" mode="indeterminate" *ngIf="load_circle"></md-spinner>
-          <button md-mini-fab class="flex-item" fxFlex="12" fxFlex.xs="1" fxLayout="column" color="primary" (click)="startVM(myVM._id)" class="button_vm" [disabled]="stop || load_circle"><md-icon>play_arrow</md-icon></button>
+          <button md-mini-fab color="primary" (click)="startVM(myVM._id)" [disabled]="stop || load_circle"><md-icon>play_arrow</md-icon></button>
           <div class="flex-item" fxFlex="1" fxLayout="column"></div>
-          <button md-mini-fab class="flex-item" fxFlex="12" fxFlex.xs="1" fxLayout="column" color="primary" (click)="stopVM(myVM._id)" class="button_vm" [disabled]="start || load_circle"><md-icon>pause</md-icon></button>
+          <button md-mini-fab color="primary" (click)="stopVM(myVM._id)" [disabled]="start || load_circle"><md-icon>pause</md-icon></button>
           <div class="flex-item" fxFlex="1" fxLayout="column"></div>  
-          <button md-mini-fab class="flex-item" fxFlex="12" fxFlex.xs="1" fxLayout="column" color="primary" (click)="removeVM(myVM._id)" class="button_vm"><md-icon>delete</md-icon></button>
+          <button md-mini-fab color="primary" (click)="openDialog(myVM._id)"><md-icon>delete</md-icon></button>
         </div>
       </md-card-content>
     </md-card>
