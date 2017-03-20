@@ -12,6 +12,8 @@ import {
 } from '@angular/forms';
 import { AuthService } from '../auth/auth.service';
 import { User } from '../auth/user';
+import { DialogConnexionComponent } from '../dialog-connexion/dialog-connexion.component';
+
 
 @Component({
   selector: 'app-dialog-inscription',
@@ -30,7 +32,8 @@ export class DialogInscriptionComponent implements OnInit {
 
   constructor(public dialogRef: MdDialogRef < DialogInscriptionComponent >,
   private authService: AuthService,
-  public snackBar: MdSnackBar) {
+  public snackBar: MdSnackBar,
+  public dialogConnexion: MdDialog) {
 
   }
   ngOnInit() {
@@ -75,6 +78,11 @@ export class DialogInscriptionComponent implements OnInit {
 
   closeDialog() {
     this.dialogRef.close();
+  }
+
+  showDialogConnexion() {
+    this.dialogRef.close();
+    this.dialogConnexion.open(DialogConnexionComponent);
   }
 
 }
